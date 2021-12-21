@@ -51,7 +51,7 @@ def signup(request):
 			# If user already exists, show appropriate message and redirect to login page
 			if user:
 				messages.info(request, 'Username Taken. Choose a differet username')
-				return render(request, 'signup.html')
+				return render(request, 'login.html')
 
 			try:
 				# Check if email already exists
@@ -62,7 +62,7 @@ def signup(request):
 			# If email already exists, show appropriate message and redirect to login page
 			if user:
 				messages.info(request, 'An account with this email aready exists.')
-				return render(request, 'signup.html')
+				return render(request, 'login.html')
 
 			# Create a new user with the given details
 			user = User.objects.create_user(username=username, password=password, email=email)
@@ -74,9 +74,9 @@ def signup(request):
 			return redirect('index')
 		else:
 			messages.info(request, 'passwords not matching...')
-			return render(request, 'signup.html')
+			return render(request, 'login.html')
 
-	return render(request, 'signup.html')
+	return render(request, 'login.html')
 
 def logout(request):
 	auth.logout(request)
