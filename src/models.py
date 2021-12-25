@@ -12,10 +12,6 @@ class Profiles(models.Model):
 	dob = models.DateTimeField(null=True)
 	created_at = models.DateTimeField(default=now)
 
-
-class Admins(models.Model):
-	admin_id = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
-
 class Teachers(models.Model):
 	teacher_id = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
 

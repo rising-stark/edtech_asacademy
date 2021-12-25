@@ -10,9 +10,6 @@ def home(request):
 def index(request):
 	return render(request, "index.html")
 
-def admin(request):
-	return render(request, "admin.html")
-
 def login(request):
 	if request.method == 'POST':
 		username = request.POST['username']
