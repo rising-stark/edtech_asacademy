@@ -25,6 +25,7 @@ urlpatterns = [
     path('signup/', views.signup, name='signup'),
     path('register/', views.signup, name='signup'),
     path('logout/', views.logout, name='logout'),
+    path('admin/', views.admin, name='admin'),
 
     # Post requests
     path('signup', views.signup, name='signup'),

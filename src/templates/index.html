@@ -1,60 +1,59 @@
+  {% load static %}
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    {% include "_head.html" %}
-    
+    {% include '_head.html' %}
     <!-- Template Title -->
     <title>Home</title>
+    <style>
+ .contact{
+        padding: 4%;
+        height: 400px;
+    }
+    .col-md-3{
+        background: #ff9b00;
+        padding: 4%;
+        border-top-left-radius: 0.5rem;
+        border-bottom-left-radius: 0.5rem;
+    }
+    .contact-info{
+        margin-top:10%;
+    }
+    .contact-info img{
+        margin-bottom: 15%;
+    }
+    .contact-info h2{
+        margin-bottom: 10%;
+    }
+    .col-md-9{
+        background: #fff;
+        padding: 3%;
+        border-top-right-radius: 0.5rem;
+        border-bottom-right-radius: 0.5rem;
+    }
+    .contact-form label{
+        font-weight:600;
+    }
+    .contact-form button{
+        background: #25274d;
+        color: #fff;
+        font-weight: 600;
+        width: 25%;
+    }
+    .contact-form button:focus{
+        box-shadow:none;
+    }
+</style>
+
 
   </head>
   <body>
-    <style>
-      .contact{
-      padding: 4%;
-      height: 400px;
-      }
-      .col-md-3{
-      background: #ff9b00;
-      padding: 4%;
-      border-top-left-radius: 0.5rem;
-      border-bottom-left-radius: 0.5rem;
-      }
-      .contact-info{
-      margin-top:10%;
-      }
-      .contact-info img{
-      margin-bottom: 15%;
-      }
-      .contact-info h2{
-      margin-bottom: 10%;
-      }
-      .col-md-9{
-      background: #fff;
-      padding: 3%;
-      border-top-right-radius: 0.5rem;
-      border-bottom-right-radius: 0.5rem;
-      }
-      .contact-form label{
-      font-weight:600;
-      }
-      .contact-form button{
-      background: #25274d;
-      color: #fff;
-      font-weight: 600;
-      width: 25%;
-      }
-      .contact-form button:focus{
-      box-shadow:none;
-      }
-      header {
-        {% load static %}
-        background: url("{% static 'images/header.png' %}") 50% 0 no-repeat fixed;
-        background-size: cover;
-      }
-    </style>
+
+
   {% include "navbar.html" %}
 
-  
+
+
     <!-- ====== Header Section ====== -->
     <header id="top">
       <div class="bg-color">
@@ -62,15 +61,19 @@
           <div class="container">
             <div class="row">
 
+
               <div class="col-sm-7 col-md-7">
                 <div class="content">
                   <h1><strong>AS</strong><strong> Academy</strong></h1>
-				  <h2>Giving Education a New Outlook</h2> 
+          <h2>Giving Education a New Outlook</h2>
                   <div class="button" id="download-app1">
-                    <a href="booknow.html" class="btn btn-default btn-lg custom-btn">Book online</a>
+                    <a href="booknow.php" class="btn btn-default btn-lg custom-btn">Book online</a>
                   </div> <!-- end .button -->
                 </div> <!-- end .content -->
               </div> <!-- end .top > .container> .row> .col-md-7 -->
+
+
+
 
 
 
@@ -80,28 +83,33 @@
       </div> <!-- end .bg-color -->
     </header>
     <!-- ====== End Header Section ====== -->
-     
+
+
 
     <!-- ====== Menu Section ====== -->
- 
+
     <!-- ====== End Menu Section ====== -->
 
+
     <!-- ====== aboutApp Section ====== -->
- 
+
   <div class="services">
     <h1>Our Services</h1>
     <div class="cen">
       <div class="service">
 
+
         <img src = "https://static.wixstatic.com/media/11062b_6e438504ac3243628f5e612dcf994024~mv2.jpg/v1/fill/w_485,h_524,fp_0.50_0.50,q_80,usm_0.66_1.00_0.01/11062b_6e438504ac3243628f5e612dcf994024~mv2.webp" >
         <h2>KS2 SATs Buster Duo Course</h2>
-       
+
         <p>Started Sep 13
         <br>
         £250</p>
 
-    <a href="booknow.html"><button>Book Now</button></a>
+
+    <a href="booknow.php"><button>Book Now</button></a>
   </div>
+
 
         <div class="service">
            <img src = "https://static.wixstatic.com/media/11062b_64d05b10dd3943f9bc6db8866cce5b4d~mv2.jpeg/v1/fill/w_485,h_524,fp_0.50_0.50,q_80,usm_0.66_1.00_0.01/11062b_64d05b10dd3943f9bc6db8866cce5b4d~mv2.webp" >
@@ -109,8 +117,9 @@
           <p>Started Sep 14
 <br>
 £250</p>
-          <a href="booknow.html"><button>Book Now</button></a>
+          <a href="booknow.php"><button>Book Now</button></a>
         </div>
+
 
         <div class="service">
            <img src = "https://static.wixstatic.com/media/11062b_397fb34f0e3641aeb14a5e4c22feb4f3~mv2.jpg/v1/fill/w_485,h_524,fp_0.50_0.50,q_80,usm_0.66_1.00_0.01/11062b_397fb34f0e3641aeb14a5e4c22feb4f3~mv2.webp" >
@@ -118,8 +127,9 @@
           <p>1 hr
 <br>
 £25</p>
-          <a href="booknow.html"><button>Book Now</button></a>
+          <a href="booknow.php"><button>Book Now</button></a>
         </div>
+
 
         <div class="service">
            <img src = "https://static.wixstatic.com/media/11062b_a35cebc135d247be962bb4995bd72472~mv2_d_3471_2305_s_2.jpg/v1/fill/w_485,h_524,fp_0.50_0.50,q_80,usm_0.66_1.00_0.01/11062b_a35cebc135d247be962bb4995bd72472~mv2_d_3471_2305_s_2.webp" >
@@ -127,8 +137,9 @@
           <p>1 hr
 <br>
 £25</p>
-          <a href="booknow.html"><button>Book Now</button></a>
+          <a href="booknow.php"><button>Book Now</button></a>
         </div>
+
 
         <div class="service">
            <img src = "https://static.wixstatic.com/media/11062b_6e438504ac3243628f5e612dcf994024~mv2.jpg/v1/fill/w_485,h_524,fp_0.50_0.50,q_80,usm_0.66_1.00_0.01/11062b_6e438504ac3243628f5e612dcf994024~mv2.webp" >
@@ -136,42 +147,49 @@
           <p>1 hr
 <br>
 £25</p>
-          <a href="booknow.html"><button>Book Now</button></a>
+          <a href="booknow.php"><button>Book Now</button></a>
         </div>
+
 
         <div class="service">
            <img src = "https://static.wixstatic.com/media/11062b_397fb34f0e3641aeb14a5e4c22feb4f3~mv2.jpg/v1/fill/w_485,h_524,fp_0.50_0.50,q_80,usm_0.66_1.00_0.01/11062b_397fb34f0e3641aeb14a5e4c22feb4f3~mv2.webp" >
           <h2>TutorPro 1-to-1 English</h2>
           <p>1 hr</p>
-          <a href="booknow.html"><button>Book Now</button></a>
+          <a href="booknow.php"><button>Book Now</button></a>
         </div>
-      
-  
+
+
+
 
     <div class="service">
           <img src = "https://static.wixstatic.com/media/11062b_6e438504ac3243628f5e612dcf994024~mv2.jpg/v1/fill/w_485,h_524,fp_0.50_0.50,q_80,usm_0.66_1.00_0.01/11062b_6e438504ac3243628f5e612dcf994024~mv2.webp" >
           <h2>TutorPro 1-to-1 Maths</h2>
           <p>1 hr</p>
-          <a href="booknow.html"><button>Book Now</button></a>
+          <a href="booknow.php"><button>Book Now</button></a>
         </div>
-   
+
+
 
     <div class="service">
            <img src = "https://static.wixstatic.com/media/401de055c6c54142a78816a93aefd906.jpg/v1/fill/w_485,h_524,fp_0.50_0.50,q_80,usm_0.66_1.00_0.01/401de055c6c54142a78816a93aefd906.webp" >
           <h2>TutorPro 1-to-1 Science</h2>
           <p>1 hr</p>
-          <a href="booknow.html"><button>Book Now</button></a>
+          <a href="booknow.php"><button>Book Now</button></a>
         </div>
       </div>
     </div>
 
 
+
+
     <!-- ====== End aboutApp Section ====== -->
+
 
     <!-- ====== Features Section ====== -->
     <section id="features">
       <div class="features section-padding dark-bg">
         <div class="container">
+
 
           <div class="header">
             <h1>Our Courses</h1>
@@ -180,27 +198,33 @@
             </div>
           </div> <!-- end .container> .header -->
 
-                
-                
+
+
+
                         <div class="header">
-						 
+
                             <h3 class="media-heading">11 PLUS COURSE FOR SCHOOLS</h3>
                             <p>Exceed Your Expectations</p>
                          <p> The 11 Plus Course is an excellent way for you to build upon existing academic foundations and learn additional skills that will ensure that you excel on your 11 Plus for Grammar and Private Schools. With flexible schedules, it is easy to find a course that suits your needs. Click to book a course now!</p>
                         </div>
                     </div><!-- End Service #1 -->
 
-                  
 
-              
+
+
+
+
     </section>
     <!-- ====== End Features Section ====== -->
+
+
 
 
     <!-- ====== Screenshots Section ====== -->
     <section id="screenshots">
       <div class="screenshots section-padding">
         <div class="container">
+
 
           <div class="header">
           <h3 class="media-heading">SATS BUSTER COURSES FOR SCHOOLS</h3>
@@ -209,13 +233,15 @@
             <div class="underline"></div>
           </div>
 
-         
+
+
+
 
         </div> <!-- .container -->
-      </div> <!-- end .screenshots -->  
+      </div> <!-- end .screenshots -->
     </section>
     <!-- ====== End Screenshots Section ====== -->
- 
+
     <!-- ====== Testimonial Section ====== -->
     <section id="testimonial">
       <div class="bg-color bg-testimonial">
@@ -230,9 +256,10 @@
                 </ol>
                 <div class="carousel-inner">
 
+
                   <div class="item">
                     <div class="image">
-                   
+
                     </div> <!-- end .image -->
                     <div class="content">
                       <p>I love how this site has really allowed my daughter to achieve her full potential!</p>
@@ -240,9 +267,10 @@
                     </div> <!-- end .content -->
                   </div> <!-- end .item (1) -->
 
+
                   <div class="item active left">
                     <div class="image">
-                     
+
                     </div> <!-- end .image -->
                     <div class="content">
                       <p>Due to our busy schedules, we were finding it hard to commit to a tutoring schedule. However, ever since we found this site, we have been able to affordably access SATs material as well as flexible tutoring, for our son without compromising our routine! I highly recommend AS Academy to anyone.</p>
@@ -250,15 +278,17 @@
                     </div> <!-- end .content -->
                   </div> <!-- end .item (2) -->
 
+
                   <div class="item next left">
                     <div class="image">
-                      
+
                     </div> <!-- end .image -->
                     <div class="content">
                       <p>Great site and really responsive tutors.</p>
-                      <h4>Diane Halsssls</h4>
+                      <h4>Diane Halls</h4>
                     </div> <!-- end .content -->
                   </div> <!-- end .item (3) -->
+
 
                 </div> <!-- end .carousel-inner -->
               </div> <!-- end #carousel-testimonial -->
@@ -273,17 +303,28 @@
 
 
 
-  
+
+
+
+
+
+
     <!-- ====== End Price Section ====== -->
 
 
-  
 
-  
+
+
+
+
+
+
+
 
 
 <button style = "position: fixed;bottom: 0px;
     right: 0px;" type="button" class="btn btn-primary" data-toggle="modal" data-target=".bd-example-modal-lg">Contact us</button>
+
 
 <div class="modal fade bd-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
   <div class="modal-dialog modal-lg">
@@ -300,13 +341,13 @@
             <div class="contact-form">
                 <div class="form-group">
                   <label class="control-label col-sm-2" for="fname">First Name:</label>
-                  <div class="col-sm-10">          
+                  <div class="col-sm-10">
                     <input type="text" class="form-control" id="fname" placeholder="Enter First Name" name="fname">
                   </div>
                 </div>
                 <div class="form-group">
-                  <label class="control-label col-sm-2" for="lname">Last fsdfName:</label>
-                  <div class="col-sm-10">          
+                  <label class="control-label col-sm-2" for="lname">Last Name:</label>
+                  <div class="col-sm-10">
                     <input type="text" class="form-control" id="lname" placeholder="Enter Last Name" name="lname">
                   </div>
                 </div>
@@ -322,7 +363,7 @@
                     <textarea class="form-control" rows="5" id="comment"></textarea>
                   </div>
                 </div>
-                <div class="form-group">        
+                <div class="form-group">
                   <div class="col-sm-offset-2 col-sm-10">
                     <button type="submit" class="btn btn-default">Submit</button>
                   </div>
@@ -335,11 +376,13 @@
 </div>
 
 
+
+
     <!-- the lines below are needed -->
 <!--     <div class="fcf-body">
         <div class="fcf-form-wrap">
             <div id="fcf-form">
-                <form class="fcf-form-class" method="post" action="fcf-assets/fcf.process.html">
+                <form class="fcf-form-class" method="post" action="fcf-assets/fcf.process.php">
 
                     <div class="fcf-field">
                         <label for="Name" class="fcf-label has-text-weight-normal">Your name</label>
@@ -383,10 +426,12 @@
             </div>
         </div>
     </div> -->
-    <script src="fcf-assets/js/lang/fcf.en.js"></script>
-    <script src="fcf-assets/js/fcf.just-validate.min.js"></script>
-    <script src="fcf-assets/js/fcf.form.js"></script>
+    <script src="{% static 'fcf-assets/js/lang/fcf.en.js' %}"></script>
+    <script src="{% static 'fcf-assets/js/fcf.just-validate.min.js' %}"></script>
+    <script src="{% static 'fcf-assets/js/fcf.form.js' %}"></script>
     <!-- the lines above are needed -->
+
+
 
 
     <!-- ====== End Contact Section ====== -->
@@ -395,42 +440,55 @@
 
 
 
+
+
+
+
+
     <!-- jQuery -->
     <script src="http://code.jquery.com/jquery.min.js"></script>
-    <script src="js/jquery.js"></script>
-    
+    <script src="{% static 'js/jquery.js' %}"></script>
+
     <!-- Modernizr js -->
-    <script src="js/modernizr-latest.js"></script>
+    <script src="{% static 'js/modernizr-latest.js' %}"></script>
+
 
     <!-- Bootstrap 3.2.0 js -->
-    <script src="js/bootstrap.min.js"></script>
+    <script src="{% static 'js/bootstrap.min.js' %}"></script>
+
 
     <!-- Owl Carousel plugin -->
-    <script src="js/owl.carousel.min.js"></script>
+    <script src="{% static 'js/owl.carousel.min.js' %}"></script>
+
 
     <!-- ScrollTo js -->
-    <script src="js/jquery.scrollto.min.js"></script>
+    <script src="{% static 'js/jquery.scrollto.min.js' %}"></script>
+
 
     <!-- LocalScroll js -->
-    <script src="js/jquery.localScroll.min.js"></script>
+    <script src="{% static 'js/jquery.localScroll.min.js' %}"></script>
+
 
     <!-- jQuery Parallax plugin -->
-    <script src="js/jquery.parallax-1.1.3.js"></script>
+    <script src="{% static 'js/jquery.parallax-1.1.3.js' %}"></script>
+
 
     <!-- Skrollr js plugin -->
-    <script src="js/skrollr.min.js"></script>
-    
+    <script src="{% static 'js/skrollr.min.js' %}"></script>
+
     <!-- jQuery Pretty Photo Plugin -->
-    <script src="js/jquery.prettyPhoto.js"></script>
+    <script src="{% static 'js/jquery.prettyPhoto.js' %}"></script>
+
+
 
 
  <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
 
-
     <!-- Custom JS -->
-    <script src="js/main.js"></script>
+    <script src="{% static 'js/main.js' %}"></script>
+
 
     <script>
       jQuery(document).ready(function($) {
