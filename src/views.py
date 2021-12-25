@@ -4,11 +4,20 @@ from django.contrib.auth.models import User, auth
 from src.models import *
 from datetime import datetime, timedelta
 
-def home(request):
-	return render(request, "index.html")
-
 def index(request):
 	return render(request, "index.html")
+
+def booknow(request):
+	return render(request, "booknow.html")
+
+def planspricing(request):
+	return render(request, "planspricing.html")
+
+def about(request):
+	return render(request, "about.html")
+
+def contact(request):
+	return render(request, "contact.html")
 
 def login(request):
 	if request.method == 'POST':
@@ -26,7 +35,7 @@ def login(request):
 			messages.info(request, 'invalid credentials')
 			return render(request, 'login.html')
 
-	# If user is already logged in then render the todo task list
+	# If user is already logged in then render the index page
 	if request.user.is_authenticated:
 		return redirect('index')
 

@@ -24,12 +24,18 @@
     <nav>
   
               <ul class="nav navbar-nav navbar-right">
-                <li><a href="index.html">Home</a></li>
-                <li><a href="booknow.html">Book Online</a></li>
-                <li><a href="planspricing.html">Plans & Pricing</a></li>
-                <li><a href="about.html">About</a></li>
-                <li><a href="fcf.form.html">Contact</a></li>
-                <li><a href="#price">More</a></li>
+                <li><a href="/">Home</a></li>
+                <li><a href="/booknow">Book Online</a></li>
+                <li><a href="/planspricing">Plans & Pricing</a></li>
+                <li><a href="/about">About</a></li>
+                <li><a href="/contact">Contact</a></li>
+                {% if request.user.is_authenticated %}
+                <li><a href="/profile">Welcome, <b><em>{{ request.user}}</em></b>&nbsp;&nbsp;<i class="fa fa-user"></i></a></li>
+                <li><a href="/logout" class="btn btn-info">logout</a></li>
+                {% else %}
+                <li><a href="/login" class="btn btn-info">Login</a></li>
+                <li><a href="/signup" class="btn btn-info">Signup</a></li>
+                {% endif %}
               </ul>
             </div><!-- end .navbar-collapse -->
 

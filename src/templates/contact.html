@@ -2,52 +2,19 @@
 <html lang="en">
 
 <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-
-    <!-- the 2 lines below is needed -->
-    <link href="fcf-assets/css/fcf.default.css" rel="stylesheet">
-    <link href="fcf-assets/css/fcf.default-custom.css" rel="stylesheet">
-    
-    <title>Contact Form</title>
-    
-    <link rel="icon" href="" type="image/x-icon"/>
-
-    <!-- Bootstrap 3.3.0 stylesheet -->
-    <link href="css/bootstrap.min.css" rel="stylesheet">
-
-    <!-- Font Awesome Icon stylesheet -->
-    <link href="css/font-awesome.min.css" rel="stylesheet">
-
-    <!-- Owl Carousel stylesheet -->
-    <link href="css/owl.carousel.css" rel="stylesheet">
-    
-    <!-- Pretty Photo stylesheet -->
-    <link href="css/prettyPhoto.css" rel="stylesheet">
-
-    <!-- Custom stylesheet -->
-    <link href="css/style.css" rel="stylesheet"> 
-
-
-    <!-- Custom Responsive stylesheet -->
-    <link href="css/responsive.css" rel="stylesheet">
-
-    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
-    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
-    <!--[if lt IE 9]>
-      <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
-      <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
-    <![endif]-->
+    {% include '_head.html' %}
+    <!-- Template Title -->
+    <title>Contact us</title>
 </head>
 
 <body>
     {% include "navbar.html" %}
 
     <!-- the lines below are needed -->
-    <div class="fcf-body">
+    <div class="fcf-body" style="text-align: center;">
         <div class="fcf-form-wrap">
             <div id="fcf-form">
-                <form class="fcf-form-class" method="post" action="fcf-assets/fcf.process.php">
+                <form class="fcf-form-class" method="post" action="/contact">
 
                     <div class="fcf-field">
                         <label for="Name" class="fcf-label has-text-weight-normal">Your name</label>
@@ -93,10 +60,5 @@
             </div>
         </div>
     </div>
-    <script src="fcf-assets/js/lang/fcf.en.js"></script>
-    <script src="fcf-assets/js/fcf.just-validate.min.js"></script>
-    <script src="fcf-assets/js/fcf.form.js"></script>
-    <!-- the lines above are needed -->
-
 </body>
 </html>

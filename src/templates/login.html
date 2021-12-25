@@ -20,7 +20,7 @@
             <img src="{% static 'images/book.png' %}" alt="login-book" />
           </div>
           <div class="formBx">
-            <form method="POST" action="/login" onsubmit="return false;">
+            <form method="POST" action="/login">
               {% csrf_token %}
               <h2>Sign In</h2>
               <input type="text" name="username" placeholder="Username" />
@@ -35,13 +35,13 @@
         </div>
         <div class="user signupBx">
           <div class="formBx">
-            <form method="POST" action="/signup" onsubmit="return false;">
+            <form method="POST" action="/signup">
               {% csrf_token %}
               <h2>Create an account</h2>
               <input type="text" name="username" placeholder="Username" />
               <input type="email" name="email" placeholder="Email Address" />
               <input type="password" name="password" placeholder="Create Password" />
-              <input type="password" name="password" placeholder="Confirm Password" />
+              <input type="password" name="confirm_password" placeholder="Confirm Password" />
               <input type="submit" value="Sign Up" />
               <p class="signup">
                 Already have an account ?
