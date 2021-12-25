@@ -22,25 +22,21 @@ CREATE TABLE profiles(
 
 CREATE TABLE admins(
 	admin_id INT AUTO_INCREMENT PRIMARY KEY,
-	username VARCHAR(40) NOT NULL,
 	FOREIGN KEY (admin_id) REFERENCES members(member_id)
 );
 
 CREATE TABLE teachers(
 	teacher_id INT AUTO_INCREMENT PRIMARY KEY,
-	username VARCHAR(40) NOT NULL,
 	FOREIGN KEY (teacher_id) REFERENCES members(member_id)
 );
 
 CREATE TABLE parents(
 	parent_id INT AUTO_INCREMENT PRIMARY KEY,
-	username VARCHAR(40) NOT NULL,
 	FOREIGN KEY (parent_id) REFERENCES members(member_id)
 );
 
 CREATE TABLE students(
 	student_id INT AUTO_INCREMENT PRIMARY KEY,
-	username VARCHAR(40) NOT NULL,
 	FOREIGN KEY (student_id) REFERENCES members(member_id)
 );
 
@@ -52,7 +48,9 @@ CREATE TABLE subjects(
 CREATE TABLE plans(
 	plan_id INT AUTO_INCREMENT PRIMARY KEY,
 	plan_name VARCHAR(100) NOT NULL,
-	plan_price INT NOT NULL DEFAULT 0
+	plan_price INT NOT NULL DEFAULT 0,
+	plan_starts_at TIMESTAMP NOT NULL,
+	plan_ends_at TIMESTAMP,
 );
 
 CREATE TABLE courses(
@@ -76,10 +74,11 @@ CREATE TABLE teaches(
 );
 
 CREATE TABLE enrollments(
-	enrollment_id INT NOT NULL,
+	enrollment_id INT AUTO_INCREMENT PRIMARY KEY,
 	student_id INT NOT NULL,
-	enrollment_type ENUM ('plan', 'course'),
+	plan_id INT NOT NULL,
 	FOREIGN KEY (student_id) REFERENCES students(student_id)
+	FOREIGN KEY (plan_id) REFERENCES plans(plan_id)
 );
 
 CREATE TABLE takes(
@@ -96,7 +95,6 @@ CREATE TABLE lessons(
 	lesson_link VARCHAR(255) NOT NULL,
 	lesson_starts_at TIMESTAMP NOT NULL,
 	lesson_ends_at TIMESTAMP NOT NULL,
-	lesson_price INT NOT NULL DEFAULT 0,
 	FOREIGN KEY (course_id) REFERENCES courses(course_id),
 	FOREIGN KEY (lesson_taken_by) REFERENCES teachers(teacher_id)
 );
