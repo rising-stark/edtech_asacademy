@@ -6,7 +6,7 @@
           <div class="navigation-bar">
 
 
-      <!--    <span><a class="logo" href="#"><img class="logo" src="logoas.png"/></a></span>  logo needs resizing -->
+    
        
             
               <button type="button" class="navbar-toggle">
@@ -31,10 +31,10 @@
                 <li><a href="/contact">Contact</a></li>
                 {% if request.user.is_authenticated %}
                 <li><a href="/profile">Welcome, <b><em>{{ request.user}}</em></b>&nbsp;&nbsp;<i class="fa fa-user"></i></a></li>
-                <li><a href="/logout" class="btn btn-info">logout</a></li>
+                <li><a href="/logout" >logout</a></li>
                 {% else %}
-                <li><a href="/login" class="btn btn-info">Login</a></li>
-                <li><a href="/signup" class="btn btn-info">Signup</a></li>
+                <li><a href="/login" >Login</a></li>
+                <li><a href="/signup" >Signup</a></li>
                 {% endif %}
               </ul>
             </div><!-- end .navbar-collapse -->
