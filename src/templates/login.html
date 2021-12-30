@@ -1,60 +1,60 @@
+{% load static %}
 <!DOCTYPE html>
 <html lang="en">
-  {% load static %}
 
 <head>
-  {% include "navbar.html" %}
   {% include '_head.html' %}
-
-
+  <title>Login and signup</title>
   <link rel="stylesheet" href="{% static 'css/login.css' %}">
+</head>
 
-  <body>
-    <section>
-      <div class="container">
-        <div class="user signinBx">
-          <div class="imgBx"><img src="{% static 'images/book.png' %}" /></div>
-          <div class="formBx">
-            <form>
-              <h2>Sign In</h2>
-              <input type="text" name="" placeholder="Username" />
-              <input type="password" name="" placeholder="Password" />
-              <input type="submit" name="" value="Login" />
-              <p class="signup">
-                Don't have an account ?<a href="#" onclick="toggleForm();">
-                  Sign Up
-                </a>
-              </p>
-            </form>
-          </div>
-        </div>
-        <div class="user signupBx">
-          <div class="formBx">
-            <form>
-              <h2>Create an Account!</h2>
-              <input type="text" name="" placeholder="Username" />
-              <input type="email" name="" placeholder="Email Id" />
-              <input type="password" name="" placeholder="Create Password" />
-              <input type="password" name="" placeholder="Confirm Password" />
-              <input type="submit" name="" value="Sign Up" />
-              <p class="signup">
-                Already have an account ?
-                <a href="#" onclick="toggleForm();"> Sign In </a>
-              </p>
-            </form>
-          </div>
-          <div class="imgBx"><img src="{% static 'images/closedbook.png' %}" /></div>
+<body>
+  {% include "navbar.html" %}
+  <section id="login_section">
+    <div class="container">
+      <div class="user signinBx">
+        <div class="imgBx"><img src="{% static 'images/book.png' %}" /></div>
+        <div class="formBx">
+          <form method="POST" action="/login">
+            {% csrf_token %}
+            <h2>Sign In</h2>
+            <input type="text" name="username" placeholder="Username" />
+            <input type="password" name="password" placeholder="Password" />
+            <input type="submit" name="" value="Login" />
+            <p class="signup">
+              Don't have an account ?<a href="#" onclick="toggleForm();">
+                Sign Up
+              </a>
+            </p>
+          </form>
         </div>
       </div>
-    </section>
- 
-  </body>
-
+      <div class="user signupBx">
+        <div class="formBx">
+          <form method="POST" action="/signup">
+            {% csrf_token %}
+            <h2>Create an Account!</h2>
+            <input type="text" name="username" placeholder="Username" />
+            <input type="email" name="email" placeholder="Email Id" />
+            <input type="password" name="password" placeholder="Create Password" />
+            <input type="password" name="confirm_password" placeholder="Confirm Password" />
+            <input type="submit" name="submit" value="Sign Up" />
+            <p class="signup">
+              Already have an account ?
+              <a href="#" onclick="toggleForm();"> Sign In </a>
+            </p>
+          </form>
+        </div>
+        <div class="imgBx"><img src="{% static 'images/closedbook.png' %}" /></div>
+      </div>
+    </div>
+  </section>
 <script>
-  const toggleForm = () => {
-      const container = document.querySelector('.container');
-      container.classList.toggle('active');
-    };
+const toggleForm = () => {
+  const container = document.querySelector('#login_section .container');
+  container.classList.toggle('active');
+};
 </script>
+</body>
 
 </html>

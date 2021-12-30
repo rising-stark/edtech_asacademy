@@ -1,47 +1,41 @@
+{% load static %}
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    {% include '_head.html' %}
 
-    {% load static %}
-    <link rel="stylesheet" href="{% static 'css/about.css' %}">
+<head>
+  {% include '_head.html' %}
+  <link rel="stylesheet" href="{% static 'css/about.css' %}">
+  <!-- Template Title -->
+  <title>About us</title>
+</head>
 
-    <!-- Template Title -->
-    <title>About us</title>
-  </head>
-  <body>
-
-    {% include "navbar.html" %}
-
-    <section class="about" id="about">
-      <div class="container">
-          <div class="heading text-center">
-              <h2>About
-                  <span>As Academy</span></h2>
-              <p>AS Academy was founded in 2021 with one goal in mind: to develop study methods 
-                that will help as many students as possible achieve academic excellence. 
-              
-   
-              </p>
-          </div>
-          <div class="row">
-              <div class="col-lg-6">
-                  <img src="{% static 'images/about.jpg' %}" alt="about" class="img-fluid" >
-              </div>
-              <div class="col-lg-6">
-                  <h3>Top Quality Guidance</h3>
-                  <p>  Our trusted learning techniques, along with our skilled, enthusiastic teachers and 
-                    tutors, have ensured the success of hundreds of students.</p>
-         <br>
-
-                      <h3>Our passion</h3>
-                      <p>We believe in putting the student first, providing customised strategies that work. 
-                        We have a wide range of courses at different skills levels which can easily suit your schedule.
-                         Contact us today so we can help you build your brighter future.</p>
-              
-                      </div>
-                  </div>
-              </div>
-          </div>
+<body>
+  {% include "navbar.html" %}
+  <section class="about" id="about">
+    <div class="container">
+      <div class="heading text-center">
+        <h2>About
+          <span>As Academy</span></h2>
+        <p>AS Academy was founded in 2021 with one goal in mind: to develop study methods
+          that will help as many students as possible achieve academic excellence.
+        </p>
       </div>
+      <div class="row">
+        <div class="col-lg-6">
+          <img src="{% static 'images/about.jpg' %}" alt="about" class="img-fluid">
+        </div>
+        <div class="col-lg-6">
+          <h3>Top Quality Guidance</h3>
+          <p> Our trusted learning techniques, along with our skilled, enthusiastic teachers and
+            tutors, have ensured the success of hundreds of students.</p>
+          <br>
+          <h3>Our passion</h3>
+          <p>We believe in putting the student first, providing customised strategies that work.
+            We have a wide range of courses at different skills levels which can easily suit your schedule.
+            Contact us today so we can help you build your brighter future.</p>
+        </div>
+      </div>
+    </div>
+    </div>
+    </div>
   </section>

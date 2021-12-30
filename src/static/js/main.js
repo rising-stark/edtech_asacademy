@@ -1,6 +1,5 @@
-
-jQuery(window).bind('scroll', function (){
-  if (jQuery(window).scrollTop() > 900){
+jQuery(window).bind('scroll', function() {
+  if (jQuery(window).scrollTop() > 900) {
     jQuery('#main-nav').addClass('navbar-fixed-top');
   } else {
     jQuery('#main-nav').removeClass('navbar-fixed-top');
@@ -12,11 +11,11 @@ jQuery(document).ready(function($) {
   $('#main-nav .nav').onePageNav({
     currentClass: 'active',
     scrollOffset: 69,
-  });  
+  });
 });
 
-$(document).ready(function(){
-   
+$(document).ready(function() {
+
   //.parallax(xPosition, speedFactor, outerHeight) options:
   //xPosition - Horizontal position of the element
   //inertia - speed to move relative to vertical scroll. Example: 0.1 is one tenth the speed of scrolling, 2 is twice the speed of scrolling
@@ -28,26 +27,20 @@ $(document).ready(function(){
 
 
 $(document).ready(function() {
-      $(".owl-carousel").owlCarousel({
-        autoPlay: 3000,
-        items : 4,
-        itemsDesktop : [1199,3],
-        itemsDesktopSmall : [979,3]
-      });
+  $(".owl-carousel").owlCarousel({
+    autoPlay: 3000,
+    items: 4,
+    itemsDesktop: [1199, 3],
+    itemsDesktopSmall: [979, 3]
+  });
 
-    });
+});
 
-    jQuery(function( $ ){
-          $('#download-app1').localScroll({
-            duration:1200
-          });
-           $('#download-app2').localScroll({
-            duration:1000
-          });
-        });
-
-
-        function toggleForm() {
-          var container = document.querySelector(".container");
-          container.classList.toggle("active");
-        }
+jQuery(function($) {
+  $('#download-app1').localScroll({
+    duration: 1200
+  });
+  $('#download-app2').localScroll({
+    duration: 1000
+  });
+});
