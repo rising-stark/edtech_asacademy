@@ -76,6 +76,9 @@ def signup(request):
 			user = User.objects.create_user(username=username, password=password, email=email)
 			user.save(); # user created
 
+			# Assigning anyone who signs up as a parent
+			p = Parents.objects.create(parent=user)
+			p.save()
 
 			# user automatically logged-in
 			auth.login(request, user)
