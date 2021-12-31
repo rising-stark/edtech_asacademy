@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    {% include '_head.html' %}
+
+    <!-- Template Title -->
+    <title>Profile</title>
+  </head>
+  <body>
+    {% include "navbar.html" %}
+
+    <div class="container">
+      <div class="row">
+        {% for student in students %}
+          <div class="col-md-4">
+            <div class="jumbotron">
+              <h5>{{student.profile.first_name}} {{student.profile.last_name}}</h5>
+              <ul class="list-group">
+                {% if student.courses %}
+                  {% for course in student.courses %}
+                    <li class="list-group-item">{{course.course_name}}</li>
+                  {% endfor %}
+                {% else %}
+                    <li class="list-group-item">No courses yet</li>
+                {% endif %}
+              </ul>
+            </div>
+          </div>
+        {% endfor %}
+        <div class="col-md-4">
+          <div class="jumbotron">
+            <h5>Add a new child</h5>
+            <a href="/addchild"><img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQabejlBIRWpzKNdFlRdFcjJsZX6Q1JPTYzGA&usqp=CAU" alt=""></a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>

@@ -1,0 +1,40 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  {% include '_head.html' %}
+</head>
+
+<body>
+  {% include "navbar.html" %}
+  <div style="text-align: center;">
+    <form class="addchild" method="post" action="/addchild">
+      {% csrf_token %}
+      <div>
+        <label for="First Name">First name</label>
+        <div>
+          <input type="text" name="first_name" id="first_name" required>
+        </div>
+      </div>
+      <div>
+        <label for="Last Name">Last name</label>
+        <div>
+          <input type="text" name="last_name" id="last_name" required>
+        </div>
+      </div>
+      <div>
+        <label for="dob">Date of Birth</label>
+        <div>
+          <input type="date" name="dob" id="dob" required>
+        </div>
+      </div>
+      <div>
+        <div>
+          <input type="submit" name="submit" id="submit" value="Submit" required>
+        </div>
+      </div>
+    </form>
+  </div>
+</body>
+
+</html>

@@ -2,7 +2,6 @@ from django.shortcuts import render, redirect
 from django.contrib import messages
 from django.contrib.auth.models import User, auth
 from src.models import *
-from datetime import datetime, timedelta
 
 def index(request):
 	return render(request, "index.html")
@@ -91,114 +90,57 @@ def logout(request):
 	auth.logout(request)
 	return redirect('/')
 
-def tasklist(request):
-	if not request.user.is_authenticated:
-		messages.info(request, 'You need to be logged-in to access your tasks.')
-		messages.info(request, 'Don\'t have an account yet? Signup now')
-		return redirect('login')
-
-	if request.method == "POST":
-		list_name = request.POST["list_name"]
-
-		# Create a new task list
-		TaskLists.objects.create(list_name=list_name, username=request.user)
-
-	return redirect('task')
-
-def delete_list(request):
-	if request.method == "POST":
-		list_id = request.POST["list_id"]
-
-		# Delete the selected task list
-		TaskLists.objects.get(pk=list_id).delete()
-	return redirect('task')
-
-def delete_task(request):
-	if request.method == "POST":
-		task_id = request.POST["task_id"]
-
-		# Delete the selected task
-		Tasks.objects.get(pk=task_id).delete()
-	return redirect('task')
-
-def mark_as_completed(request):
-	if request.method == "POST":
-		task_id = request.POST["task_id"]
-
-		# Retrieving the particular task with the selected task_id from the database
-		t = Tasks.objects.get(pk=task_id)
-		t.completed = 1
-		t.completed_at = datetime.now()
-		t.save()
-	return redirect('task')
-
-def mark_as_incomplete(request):
-	if request.method == "POST":
-		task_id = request.POST["task_id"]
-
-		# Retrieving the particular task with the selected task_id from the database
-		t = Tasks.objects.get(pk=task_id)
-		t.completed = 0
-		t.completed_at = None
-		t.save()
-	return redirect('task')
-
-def task(request):
-
-	if not request.user.is_authenticated:
-		messages.info(request, 'You need to be logged-in to access your tasks.')
-		messages.info(request, 'Don\'t have an account yet? Signup now')
-		return redirect('login')
-
-	if request.method == "POST":
-		task_name = request.POST["task_name"]
-		task_desc = request.POST.get("task_desc", "")
-		list_id = request.POST.get("list_id", "")
-		list_name = request.POST.get("list_name",  "")
-		priority = request.POST.get("priority", 0)
-		date_due = request.POST.get("date_due", datetime.today() + timedelta(days=1))
-		completed = request.POST.get("completed", 0)
-
-		# The paramter "list_id" if not passed from the form, then it means that there was no list present since the current "Create new task" section shows all the available task lists
-		if not list_id:
-			list_id = TaskLists.objects.create(list_name=list_name, username=request.user)
-		else:
-			list_id = TaskLists.objects.get(list_id=list_id)
-
-		# Creating a new task according to the parameters passed
-		Tasks.objects.create(task_name=task_name, task_desc=task_desc, list_id=list_id, username=request.user, priority=priority, date_due=date_due, completed=completed)
-
-	# Retrieving all the tasklists from the database for this particualr user
-	task_lists = TaskLists.objects.filter(username=request.user).order_by("list_id")
-
-	# Retrieving the count of tasks in each task list from the database for this particualr user
-	task_count = Tasks.objects.filter(username=request.user).values("list_id").order_by("list_id").annotate(count=Count('task_id'))
-
-	# Retrieving all the tasks from the database for this particualr user
-	tasks = Tasks.objects.filter(username=request.user)
-
-	# Convert the "task_count" which is an object contaning ResultSets into a native python dictionary as
-	# list_id (key) -> count of tasks in this list (value)
-	task_count_dict = {}
-	for task in task_count:
-		task_count_dict[task['list_id']] = task['count']
-
-	# Including the task count in the tasks object for display purposes in task.html (frontend)
-	for task_list in task_lists:
-		task_list.count = task_count_dict.get(task_list.list_id, 0)
-
-	return render(request, "task.html", {"task_lists" : task_lists, "tasks" : tasks, "task_count":task_count_dict})
-
 def profile(request):
 	if not request.user.is_authenticated:
 		messages.info(request, 'You need to be logged-in to access profile page.')
 		messages.info(request, 'Don\'t have an account yet? Signup now')
 		return redirect('login')
 
-	# Creating a Chart class object
-	ch = Chart()
+	parent = Parents.objects.filter(parent=request.user)
+	students = None
+	if parent:
+		# If the logged-in user is a parent, then
+		# Retrieving all the courses and children from the database for this particualr user
+		students = Students.objects.filter(parent=parent[0])
+		for s in students:
+			user = User.objects.get(pk=s.student_id)
+			s.profile = Profiles.objects.get(user=user)
+			courses = Takes.objects.filter(student=s)
+			courses_enrolled = []
+			for c in courses:
+				print(c.course)
+				courses_enrolled.append(c.course)
+			s.courses = courses_enrolled
 
-	# Retrieving all the tasks from the database for this particualr user
-	tasks = Tasks.objects.filter(username=request.user)
+	return render(request, 'profile.html', {"students":students})
 
-	return render(request, 'profile.html', {"pie_graph_div":ch.pie_completed(tasks)})
+def addchild(request):
+	if not request.user.is_authenticated:
+		messages.info(request, 'You need to be logged-in to access your tasks.')
+		messages.info(request, 'Don\'t have an account yet? Signup now')
+		return redirect('login')
+
+	if request.method == "POST":
+		first_name = request.POST.get("first_name", "")
+		last_name = request.POST.get("last_name", "")
+		dob = request.POST.get("dob",  "")
+
+		parent = Parents.objects.filter(parent=request.user)[0]
+		children = Students.objects.filter(parent=parent)
+		username = request.user.username + "_child_" + str(children.count)
+		print("username = ", username)
+
+		# Create a new user with the given details
+		user = User.objects.create_user(username=username, password=request.user.password)
+		user.save(); # user created
+
+		# Creating a student with parent linked
+		s = Students.objects.create(student=user, parent=parent)
+		s.save()
+
+		# Creating a profile of this student
+		p = Profiles.objects.create(user=user, first_name=first_name, last_name=last_name, dob=dob)
+		p.save()
+		return redirect('profile')
+
+	return render(request, "addchild.html")
