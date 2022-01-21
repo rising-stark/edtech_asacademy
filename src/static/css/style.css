@@ -71,7 +71,6 @@ ul li {
     color: #fff;
     background-color: #15BD40;
     padding: 10px;
-    margin-bottom: 10px;
     border-radius: 0;
     border: none;
 }
@@ -914,4 +913,14 @@ vertical-align: middle;
     box-shadow:none;
 }
 
+.d-flex {
+	display: flex !important;
+}
 
+.valign-center {
+	align-items: center !important;
+}
+
+.space-between {
+	justify-content: space-between !important;
+}
