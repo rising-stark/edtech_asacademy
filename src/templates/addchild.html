@@ -7,30 +7,32 @@
 
 <body>
   {% include "navbar.html" %}
-  <div style="text-align: center;">
+  <div class="container">
+    <h3>Register your child</h3>
+    <p>To serve better, we need a few details of your children.</p>
     <form class="addchild" method="post" action="/addchild">
       {% csrf_token %}
-      <div>
+      <div class="form-group">
         <label for="First Name">First name</label>
         <div>
-          <input type="text" name="first_name" id="first_name" required>
+          <input type="text" class="form-control" name="first_name" id="first_name" required>
         </div>
       </div>
-      <div>
+      <div class="form-group">
         <label for="Last Name">Last name</label>
         <div>
-          <input type="text" name="last_name" id="last_name" required>
+          <input type="text" class="form-control" name="last_name" id="last_name" required>
         </div>
       </div>
-      <div>
+      <div class="form-group">
         <label for="dob">Date of Birth</label>
         <div>
-          <input type="date" name="dob" id="dob" required>
+          <input type="date" class="form-control" name="dob" id="dob" required>
         </div>
       </div>
-      <div>
+      <div class="form-group">
         <div>
-          <input type="submit" name="submit" id="submit" value="Submit" required>
+          <input type="submit" class="btn btn-primary" name="submit" id="submit" value="Submit" required>
         </div>
       </div>
     </form>

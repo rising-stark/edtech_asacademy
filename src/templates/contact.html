@@ -10,48 +10,48 @@
 <body>
   {% include "navbar.html" %}
   <!-- the lines below are needed -->
-  <div class="fcf-body" style="text-align: center;">
-    <div class="fcf-form-wrap">
-      <div id="fcf-form">
-        <form class="fcf-form-class" method="post" action="/contact">
-          <div class="fcf-field">
-            <label for="Name" class="fcf-label has-text-weight-normal">Your name</label>
-            <div class="fcf-control">
-              <input type="text" name="Name" id="Name" class="fcf-input is-full-width" maxlength="60" data-validate-field="Name">
-            </div>
+  <div class="container">
+    <h3>Contact Us</h3>
+    <p>Leave your message using the form below and we will get back to you in a few hours.</p>
+    <div id="fcf-form">
+      <form method="post" action="/contact">
+        <div class="form-group">
+          <label for="Name" class="fcf-label">Your name</label>
+          <div class="fcf-control">
+            <input type="text" name="Name" id="Name" class="fcf-input form-control is-full-width" maxlength="60" data-validate-field="Name">
           </div>
-          <div class="fcf-field">
-            <label for="Email" class="fcf-label has-text-weight-normal">Your email address</label>
-            <div class="fcf-control">
-              <input type="email" name="Email" id="Email" class="fcf-input is-full-width" maxlength="100" data-validate-field="Email">
-            </div>
+        </div>
+        <div class="form-group">
+          <label for="Email" class="fcf-label">Your email address</label>
+          <div class="fcf-control">
+            <input type="email" name="Email" id="Email" class="fcf-input form-control is-full-width" maxlength="100" data-validate-field="Email">
           </div>
-          <div class="fcf-field">
-            <label for="Phone" class="fcf-label has-text-weight-normal">Your phone number (optional)</label>
-            <div class="fcf-control">
-              <input type="text" name="Phone" id="Phone" class="fcf-input is-full-width" maxlength="30" data-validate-field="Phone">
-            </div>
+        </div>
+        <div class="form-group">
+          <label for="Phone" class="fcf-label">Your phone number (optional)</label>
+          <div class="fcf-control">
+            <input type="text" name="Phone" id="Phone" class="fcf-input form-control is-full-width" maxlength="30" data-validate-field="Phone">
           </div>
-          <div class="fcf-field">
-            <label for="Message" class="fcf-label has-text-weight-normal">Your message</label>
-            <div class="fcf-control">
-              <textarea name="Message" id="Message" class="fcf-textarea" maxlength="3000" rows="5" data-validate-field="Message"></textarea>
-            </div>
+        </div>
+        <div class="form-group">
+          <label for="Message" class="fcf-label">Your message</label>
+          <div class="fcf-control">
+            <textarea name="Message" id="Message" class="fcf-textarea form-control" maxlength="3000" rows="5" data-validate-field="Message"></textarea>
           </div>
-          <div id="fcf-status" class="fcf-status"></div>
-          <div class="fcf-field">
-            <div class="fcf-buttons">
-              <button id="fcf-button" type="submit" class="fcf-button is-link is-medium is-fullwidth">Send
-                Message</button>
-            </div>
+        </div>
+        <div id="fcf-status" class="fcf-status"></div>
+        <div class="form-group">
+          <div class="fcf-buttons">
+            <button id="fcf-button" type="submit" class="fcf-button btn btn-primary is-link is-medium is-fullwidth">Send
+              Message</button>
           </div>
-        </form>
-      </div>
-      <div id="fcf-thank-you" style="display:none">
-        <!-- Thank you message goes below -->
-        <p>Thanks for contacting us, we will get back in touch with you soon.</p>
-        <!-- Thank you message goes above -->
-      </div>
+        </div>
+      </form>
+    </div>
+    <div id="fcf-thank-you" style="display:none">
+      <!-- Thank you message goes below -->
+      <p>Thanks for contacting us, we will get back in touch with you soon.</p>
+      <!-- Thank you message goes above -->
     </div>
   </div>
 </body>

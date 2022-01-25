@@ -127,8 +127,12 @@ def addchild(request):
 		first_name = request.POST.get("first_name", "")
 		last_name = request.POST.get("last_name", "")
 		dob = request.POST.get("dob",  "")
-
-		parent = Parents.objects.filter(parent=request.user)[0]
+		
+		try:
+			parent = Parents.objects.filter(parent=request.user)[0]
+		except IndexError:
+			messages.info(request, 'You are not a parent.')
+			return redirect('profile')
 		children = Students.objects.filter(parent=parent)
 		username = request.user.username + "_child_" + str(children.count)
 		print("username = ", username)

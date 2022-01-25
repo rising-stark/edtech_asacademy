@@ -711,8 +711,13 @@ h4.media-heading {
 }
 .price .panel-heading { padding: 30px 15px }
 .price .panel-body { border-bottom: 1px solid; border-color: #DBDBDB;}
-.price ul.list-unstyled { padding: 20px }
-.price ul.list-unstyled li { padding: 10px 0 }
+.price ul.list-unstyled {
+	text-align: left !important;
+	padding: 20px;
+}
+.price ul.list-unstyled li {
+	padding: 10px 0;
+}
 .price ul.list-unstyled li small { margin-top: -10px }
 /* Featured */
 .price.featured {
