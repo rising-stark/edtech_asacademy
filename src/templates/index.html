@@ -1,12 +1,18 @@
-{% load static %}
-<!DOCTYPE html>
-<html lang="en">
+{% extends '_base.html' %}
 
-<head>
-  {% include '_head.html' %}
-  <!-- Template Title -->
+{% load static %}
+
+{% block page_header_scripts %}
   <title>Home</title>
   <style>
+    header#top {
+        /* background: url("{% static 'images/header.png' %}") 50% 0 no-repeat fixed;
+        background-size: cover; */
+        background: #373B44;  /* fallback for old browsers */
+        background: -webkit-linear-gradient(to right, #4286f4, #373B44);  /* Chrome 10-25, Safari 5.1-6 */
+        background: linear-gradient(to right, #4286f4, #373B44); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+    }
+
     .contact{
         padding: 4%;
         height: 400px;
@@ -45,10 +51,9 @@
         box-shadow:none;
     }
   </style>
-</head>
+{% endblock %}
 
-<body>
-  {% include "navbar.html" %}
+{% block content %}
   <!-- ====== Header Section ====== -->
   <header id="top">
     <div class="bg-color">
@@ -75,54 +80,54 @@
   <!-- ====== aboutApp Section ====== -->
   <div class="services">
     <h1>Our Services</h1>
-    <div class="cen">
+    <div class="container ">
       <div class="service">
         <img src="https://static.wixstatic.com/media/11062b_6e438504ac3243628f5e612dcf994024~mv2.jpg/v1/fill/w_485,h_524,fp_0.50_0.50,q_80,usm_0.66_1.00_0.01/11062b_6e438504ac3243628f5e612dcf994024~mv2.webp">
         <h2>KS2 SATs Buster Duo Course</h2>
         <p>Started Sep 13<br>£250</p>
-        <a class="btn btn-info" href="/booknow">Book Now</a>
+        <a class="btn btn-primary" href="/booknow">Book Now</a>
       </div>
       <div class="service">
         <img src="https://static.wixstatic.com/media/11062b_64d05b10dd3943f9bc6db8866cce5b4d~mv2.jpeg/v1/fill/w_485,h_524,fp_0.50_0.50,q_80,usm_0.66_1.00_0.01/11062b_64d05b10dd3943f9bc6db8866cce5b4d~mv2.webp">
         <h2>KS1 SATs Buster Duo Course</h2>
         <p>Started Sep 14<br>£250</p>
-        <a class="btn btn-info" href="/booknow">Book Now</a>
+        <a class="btn btn-primary" href="/booknow">Book Now</a>
       </div>
       <div class="service">
         <img src="https://static.wixstatic.com/media/11062b_397fb34f0e3641aeb14a5e4c22feb4f3~mv2.jpg/v1/fill/w_485,h_524,fp_0.50_0.50,q_80,usm_0.66_1.00_0.01/11062b_397fb34f0e3641aeb14a5e4c22feb4f3~mv2.webp">
         <h2>1-to-1 English</h2>
         <p>1 hr<br>£25</p>
-        <a class="btn btn-info" href="/booknow">Book Now</a>
+        <a class="btn btn-primary" href="/booknow">Book Now</a>
       </div>
       <div class="service">
         <img src="https://static.wixstatic.com/media/11062b_a35cebc135d247be962bb4995bd72472~mv2_d_3471_2305_s_2.jpg/v1/fill/w_485,h_524,fp_0.50_0.50,q_80,usm_0.66_1.00_0.01/11062b_a35cebc135d247be962bb4995bd72472~mv2_d_3471_2305_s_2.webp">
         <h2>1-to-1 Maths</h2>
         <p>1 hr<br>£25</p>
-        <a class="btn btn-info" href="/booknow">Book Now</a>
+        <a class="btn btn-primary" href="/booknow">Book Now</a>
       </div>
       <div class="service">
         <img src="https://static.wixstatic.com/media/11062b_6e438504ac3243628f5e612dcf994024~mv2.jpg/v1/fill/w_485,h_524,fp_0.50_0.50,q_80,usm_0.66_1.00_0.01/11062b_6e438504ac3243628f5e612dcf994024~mv2.webp">
         <h2>1-to-1 Science</h2>
         <p>1 hr<br>£25</p>
-        <a class="btn btn-info" href="/booknow">Book Now</a>
+        <a class="btn btn-primary" href="/booknow">Book Now</a>
       </div>
       <div class="service">
         <img src="https://static.wixstatic.com/media/11062b_397fb34f0e3641aeb14a5e4c22feb4f3~mv2.jpg/v1/fill/w_485,h_524,fp_0.50_0.50,q_80,usm_0.66_1.00_0.01/11062b_397fb34f0e3641aeb14a5e4c22feb4f3~mv2.webp">
         <h2>TutorPro 1-to-1 English</h2>
         <p>1 hr</p>
-        <a class="btn btn-info" href="/booknow">Book Now</a>
+        <a class="btn btn-primary" href="/booknow">Book Now</a>
       </div>
       <div class="service">
         <img src="https://static.wixstatic.com/media/11062b_6e438504ac3243628f5e612dcf994024~mv2.jpg/v1/fill/w_485,h_524,fp_0.50_0.50,q_80,usm_0.66_1.00_0.01/11062b_6e438504ac3243628f5e612dcf994024~mv2.webp">
         <h2>TutorPro 1-to-1 Maths</h2>
         <p>1 hr</p>
-        <a class="btn btn-info" href="/booknow">Book Now</a>
+        <a class="btn btn-primary" href="/booknow">Book Now</a>
       </div>
       <div class="service">
         <img src="https://static.wixstatic.com/media/401de055c6c54142a78816a93aefd906.jpg/v1/fill/w_485,h_524,fp_0.50_0.50,q_80,usm_0.66_1.00_0.01/401de055c6c54142a78816a93aefd906.webp">
         <h2>TutorPro 1-to-1 Science</h2>
         <p>1 hr</p>
-        <a class="btn btn-info" href="/booknow">Book Now</a>
+        <a class="btn btn-primary" href="/booknow">Book Now</a>
       </div>
     </div>
   </div>
@@ -256,80 +261,4 @@
       </div>
     </div>
   </div>
-  <!-- the lines below are needed -->
-  <!-- <div class="fcf-body">
-    <div class="fcf-form-wrap">
-      <div id="fcf-form">
-        <form class="fcf-form-class" method="post" action="fcf-assets/fcf.process.php">
-          <div class="fcf-field">
-            <label for="Name" class="fcf-label has-text-weight-normal">Your name</label>
-            <div class="fcf-control">
-              <input type="text" name="Name" id="Name" class="fcf-input is-full-width" maxlength="60" data-validate-field="Name">
-            </div>
-          </div>
-          <div class="fcf-field">
-            <label for="Email" class="fcf-label has-text-weight-normal">Your email address</label>
-            <div class="fcf-control">
-              <input type="email" name="Email" id="Email" class="fcf-input is-full-width" maxlength="100" data-validate-field="Email">
-            </div>
-          </div>
-          <div class="fcf-field">
-            <label for="Phone" class="fcf-label has-text-weight-normal">Your phone number (optional)</label>
-            <div class="fcf-control">
-              <input type="text" name="Phone" id="Phone" class="fcf-input is-full-width" maxlength="30" data-validate-field="Phone">
-            </div>
-          </div>
-          <div class="fcf-field">
-            <label for="Message" class="fcf-label has-text-weight-normal">Your message</label>
-            <div class="fcf-control">
-              <textarea name="Message" id="Message" class="fcf-textarea" maxlength="3000" rows="5" data-validate-field="Message"></textarea>
-            </div>
-          </div>
-          <div id="fcf-status" class="fcf-status"></div>
-          <div class="fcf-field">
-            <div class="fcf-buttons">
-              <button id="fcf-button" type="submit" class="fcf-button is-link is-medium is-fullwidth">Send
-                Message</button>
-            </div>
-          </div>
-        </form>
-      </div>
-      <div id="fcf-thank-you" style="display:none">
-        <p>Thanks for contacting us, we will get back in touch with you soon.</p>
-      </div>
-    </div>
-  </div> -->
-  <!-- ====== End Contact Section ====== -->
-  <!-- jQuery -->
-  <script src="http://code.jquery.com/jquery.min.js"></script>
-  <script src="{% static 'js/jquery.js' %}"></script>
-  <!-- Modernizr js -->
-  <script src="{% static 'js/modernizr-latest.js' %}"></script>
-  <!-- Bootstrap 3.2.0 js -->
-  <script src="{% static 'js/bootstrap.min.js' %}"></script>
-  <!-- Owl Carousel plugin -->
-  <script src="{% static 'js/owl.carousel.min.js' %}"></script>
-  <!-- ScrollTo js -->
-  <script src="{% static 'js/jquery.scrollto.min.js' %}"></script>
-  <!-- LocalScroll js -->
-  <script src="{% static 'js/jquery.localScroll.min.js' %}"></script>
-  <!-- jQuery Parallax plugin -->
-  <script src="{% static 'js/jquery.parallax-1.1.3.js' %}"></script>
-  <!-- Skrollr js plugin -->
-  <script src="{% static 'js/skrollr.min.js' %}"></script>
-  <!-- jQuery Pretty Photo Plugin -->
-  <script src="{% static 'js/jquery.prettyPhoto.js' %}"></script>
-  <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
-  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
-  <!-- Custom JS -->
-  <script src="{% static 'js/main.js' %}"></script>
-  <script>
-  jQuery(document).ready(function($) {
-    "use strict";
-    jQuery("a[data-rel^='prettyPhoto']").prettyPhoto({ social_tools: false });
-  });
-  </script>
-</body>
-
-</html>
+{% endblock %}

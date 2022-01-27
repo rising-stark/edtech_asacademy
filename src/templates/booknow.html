@@ -1,76 +1,73 @@
-<!DOCTYPE html>
-<html lang="en">
+{% extends '_base.html' %}
 
-<head>
-  {% include '_head.html' %}
-  <!-- Template Title -->
-  <title>Services</title>
-</head>
+{% load static %}
 
-<body>
-  {% include "navbar.html" %}
-  <!-- ====== services Section ====== -->
-  <div class="services">
-    <h1>Our Services</h1>
-    <div class="cen">
-      <div class="service">
-        <img src="/static/img/1.webp">
-        <h2>KS2 SATs Buster Duo Course</h2>
-        <p>Started Sep 13
-          <br>
-          £250</p>
-        <a class="btn btn-info" href="/booknow">Book Now</a>
-      </div>
-      <div class="service">
-        <img src="/static/img/2.webp">
-        <h2>KS1 SATs Buster Duo Course</h2>
-        <p>Started Sep 14
-          <br>
-          £250</p>
-        <a class="btn btn-info" href="/booknow">Book Now</a>
-      </div>
-      <div class="service">
-        <img src="/static/img/3.webp">
-        <h2>1-to-1 English</h2>
-        <p>1 hr
-          <br>
-          £25</p>
-        <a class="btn btn-info" href="/booknow">Book Now</a>
-      </div>
-      <div class="service">
-        <img src="/static/img/4.webp">
-        <h2>1-to-1 Maths</h2>
-        <p>1 hr
-          <br>
-          £25</p>
-        <a class="btn btn-info" href="/booknow">Book Now</a>
-      </div>
-      <div class="service">
-        <img src="/static/img/5.webp">
-        <h2>1-to-1 Science</h2>
-        <p>1 hr
-          <br>
-          £25</p>
-        <a class="btn btn-info" href="/booknow">Book Now</a>
-      </div>
-      <div class="service">
-        <img src="/static/img/6.webp">
-        <h2>TutorPro 1-to-1 English</h2>
-        <p>1 hr</p>
-        <a class="btn btn-info" href="/booknow">Book Now</a>
-      </div>
-      <div class="service">
-        <img src="/static/img/7.webp">
-        <h2>TutorPro 1-to-1 Maths</h2>
-        <p>1 hr</p>
-        <a class="btn btn-info" href="/booknow">Book Now</a>
-      </div>
-      <div class="service">
-        <img src="/static/img/8.webp">
-        <h2>TutorPro 1-to-1 Science</h2>
-        <p>1 hr</p>
-        <a class="btn btn-info" href="/booknow">Book Now</a>
-      </div>
+{% block page_header_scripts %}
+<title>Services</title>
+{% endblock %}
+
+{% block content %}
+<div class="services">
+  <h1>Our Services</h1>
+  <div class="cen">
+    <div class="service">
+      <img src="/static/img/1.webp">
+      <h2>KS2 SATs Buster Duo Course</h2>
+      <p>Started Sep 13
+        <br>
+        £250</p>
+      <a class="btn btn-info" href="/booknow">Book Now</a>
+    </div>
+    <div class="service">
+      <img src="/static/img/2.webp">
+      <h2>KS1 SATs Buster Duo Course</h2>
+      <p>Started Sep 14
+        <br>
+        £250</p>
+      <a class="btn btn-info" href="/booknow">Book Now</a>
+    </div>
+    <div class="service">
+      <img src="/static/img/3.webp">
+      <h2>1-to-1 English</h2>
+      <p>1 hr
+        <br>
+        £25</p>
+      <a class="btn btn-info" href="/booknow">Book Now</a>
+    </div>
+    <div class="service">
+      <img src="/static/img/4.webp">
+      <h2>1-to-1 Maths</h2>
+      <p>1 hr
+        <br>
+        £25</p>
+      <a class="btn btn-info" href="/booknow">Book Now</a>
+    </div>
+    <div class="service">
+      <img src="/static/img/5.webp">
+      <h2>1-to-1 Science</h2>
+      <p>1 hr
+        <br>
+        £25</p>
+      <a class="btn btn-info" href="/booknow">Book Now</a>
+    </div>
+    <div class="service">
+      <img src="/static/img/6.webp">
+      <h2>TutorPro 1-to-1 English</h2>
+      <p>1 hr</p>
+      <a class="btn btn-info" href="/booknow">Book Now</a>
+    </div>
+    <div class="service">
+      <img src="/static/img/7.webp">
+      <h2>TutorPro 1-to-1 Maths</h2>
+      <p>1 hr</p>
+      <a class="btn btn-info" href="/booknow">Book Now</a>
+    </div>
+    <div class="service">
+      <img src="/static/img/8.webp">
+      <h2>TutorPro 1-to-1 Science</h2>
+      <p>1 hr</p>
+      <a class="btn btn-info" href="/booknow">Book Now</a>
     </div>
   </div>
-  <!-- ====== End services Section ====== -->
+</div>
+{% endblock %}
