@@ -51,6 +51,19 @@
         box-shadow:none;
     }
   </style>
+  <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.css"/>
+  <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick-theme.css"/>
+
+{% endblock %}
+
+{% block page_footer_scripts %}
+<script type="text/javascript" src="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"></script>
+<script>
+  $(function() {
+    $('.carousel-inner').slick();
+});
+
+</script>
 {% endblock %}
 
 {% block content %}
@@ -60,15 +73,20 @@
       <div class="top section-padding">
         <div class="container">
           <div class="row">
-            <div class="col-sm-7 col-md-7">
-              <div class="content">
+            <div class="content row">
+              <div class="col-sm-5">
                 <h1><strong>AS</strong><strong> Academy</strong></h1>
                 <h2>Giving Education a New Outlook</h2>
                 <div class="button" id="download-app1">
                   <a href="/booknow" class="btn btn-default btn-lg custom-btn">Book online</a>
                 </div> <!-- end .button -->
-              </div> <!-- end .content -->
-            </div> <!-- end .top > .container> .row> .col-md-7 -->
+              </div>
+              <div class="col">
+                <img src="{% static 'img/background.png' %}" />
+              </div>
+              
+              
+            </div> <!-- end .content -->
           </div> <!-- end .top> .container> .row -->
         </div> <!-- end .top> .container -->
       </div> <!-- end .top -->
@@ -167,16 +185,11 @@
   <!-- ====== End Screenshots Section ====== -->
   <!-- ====== Testimonial Section ====== -->
   <section id="testimonial">
-    <div class="bg-color bg-testimonial">
+    <div class="text-light bg-dark">
       <div class="testimonial section-padding">
         <div class="container">
           <div class="testimonial-slide">
             <div id="carousel-testimonial" class="carousel slide" data-ride="carousel">
-              <ol class="carousel-indicators">
-                <li data-target="#carousel-testimonial" data-slide-to="0" class="active"></li>
-                <li data-target="#carousel-testimonial" data-slide-to="1" class=""></li>
-                <li data-target="#carousel-testimonial" data-slide-to="2" class=""></li>
-              </ol>
               <div class="carousel-inner">
                 <div class="item">
                   <div class="image">
