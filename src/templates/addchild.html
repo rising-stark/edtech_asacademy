@@ -8,33 +8,39 @@
 
 {% block content %}
 <div class="container">
-  <h3>Register your child</h3>
-  <p>To serve better, we need a few details of your children.</p>
-  <form class="addchild" method="post" action="/addchild">
-    {% csrf_token %}
-    <div class="form-group">
-      <label for="First Name">First name</label>
-      <div>
-        <input type="text" class="form-control" name="first_name" id="first_name" required>
+  <div class="row p-4 text-center">
+    <h1>Register your child</h1>
+    <p class="lead">To serve better, we need a few details of your children.</p>
+  </div>
+  <div class="row justify-content-center">
+    <div class="col-4">
+    <form class="addchild" method="post" action="/addchild">
+      {% csrf_token %}
+      <div class="form-group">
+        <label for="First Name">First name</label>
+        <div>
+          <input type="text" class="form-control" name="first_name" id="first_name" required>
+        </div>
       </div>
-    </div>
-    <div class="form-group">
-      <label for="Last Name">Last name</label>
-      <div>
-        <input type="text" class="form-control" name="last_name" id="last_name" required>
+      <div class="form-group">
+        <label for="Last Name">Last name</label>
+        <div>
+          <input type="text" class="form-control" name="last_name" id="last_name" required>
+        </div>
       </div>
-    </div>
-    <div class="form-group">
-      <label for="dob">Date of Birth</label>
-      <div>
-        <input type="date" class="form-control" name="dob" id="dob" required>
+      <div class="form-group">
+        <label for="dob">Date of Birth</label>
+        <div>
+          <input type="date" class="form-control" name="dob" id="dob" required>
+        </div>
       </div>
-    </div>
-    <div class="form-group">
-      <div>
-        <input type="submit" class="btn btn-primary" name="submit" id="submit" value="Submit" required>
+      <div class="p-3">
+        <div>
+          <input type="submit" class="btn btn-primary w-100" name="submit" id="submit" value="Submit" required>
+        </div>
       </div>
-    </div>
-  </form>
+    </form>
+  </div>
+  </div>
 </div>
 {% endblock %}

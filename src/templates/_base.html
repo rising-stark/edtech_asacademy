@@ -27,52 +27,82 @@
     {% endblock %}
 </head>
 <body>
-    <nav class="navbar  sticky-top navbar-expand-lg navbar-dark bg-success bg-gradient">
-        <div class="container">
-          <a class="navbar-brand" href="/">AS Academy</a>
-          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-          </button>
-          <div class="collapse navbar-collapse" id="navbarSupportedContent">
-            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-                <li class="nav-item"><a class="nav-link" href="/booknow">Book Online</a></li>
-                <li class="nav-item"><a class="nav-link" href="/planspricing">Plans & Pricing</a></li>
-                <li class="nav-item"><a class="nav-link" href="/about">About</a></li>
-                <li class="nav-item"><a class="nav-link" href="/contact">Contact</a></li>
-            </ul>
-            <form class="d-flex">
-                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-                  {% if request.user.is_authenticated %}
-                    <li class="nav-item"><a class="nav-link" href="/profile">Welcome, <b><em>{{ request.user}}</em></b>&nbsp;&nbsp;<i class="fa fa-user"></i></a></li>
-                    <li class="nav-item"><a class="nav-link" href="/logout">logout</a></li>
-                  {% else %}
-                    <li class="nav-item"><a class="nav-link" href="/login">Login</a></li>
-                    <li class="nav-item"><a class="nav-link" href="/signup">Signup</a></li>
-                  {% endif %}
-                </ul>
-            </form>
-          </div>
-        </div>
-      </nav>
-    
-    {% if messages %}
-        <div class="container">
-            <div class="alert alert-info" role="alert">
-                <ul>
-                    {% for message in messages %}
-                    <li>{{message}}</li>
-                    {% endfor %}
-                </ul>
+    <div id="page-container">
+      <nav class="navbar sticky-top navbar-expand-lg navbar-dark bg-success bg-gradient">
+          <div class="container">
+            <a class="navbar-brand " href="/">AS <strong>Academy</strong></a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+              <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+              <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                  <li class="nav-item"><a class="nav-link" href="/booknow">Book Online</a></li>
+                  <li class="nav-item"><a class="nav-link" href="/planspricing">Plans & Pricing</a></li>
+                  <li class="nav-item"><a class="nav-link" href="/about">About</a></li>
+                  <li class="nav-item"><a class="nav-link" href="/contact">Contact</a></li>
+              </ul>
+              <form class="d-flex">
+                  <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                    {% if request.user.is_authenticated %}
+                      <li class="nav-item"><a class="nav-link" href="/profile">Welcome, <b><em>{{ request.user}}</em></b>&nbsp;&nbsp;<i class="fa fa-user"></i></a></li>
+                      <li class="nav-item"><a class="nav-link" href="/logout">logout</a></li>
+                    {% else %}
+                      <li class="nav-item"><a class="nav-link" href="/login">Login</a></li>
+                      <li class="nav-item"><a class="nav-link btn btn-light text-black" href="/signup">Signup</a></li>
+                    {% endif %}
+                  </ul>
+              </form>
             </div>
-        </div>
-    {% endif %}
+          </div>
+        </nav>
     
-    {% block content %}
-    {% endblock %}
-
+      {% if messages %}
+          <div class="container">
+              <div class="alert alert-info" role="alert">
+                  <ul>
+                      {% for message in messages %}
+                      <li>{{message}}</li>
+                      {% endfor %}
+                  </ul>
+              </div>
+          </div>
+      {% endif %}
+      
+      {% block content %}
+      {% endblock %}
+    <div class="fixbottom"></div>
     <footer class="footer">
       <div class="container">
-        <small>&copy; AS Academy</small>
+        <div class="row p-4">
+          <div class="col p-4">
+            <ul class="flex-column">
+              <li class="nav-item">
+                <a class="nav-link link-light" href="#">Book Online</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link link-light" href="#">Plans & Pricing</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link link-light" href="#">About</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link link-light" href="#">Contact</a>
+              </li>
+            </ul>
+          </div>
+          <div class="col p-4">
+            <ul class="flex-column">
+              {% if request.user.is_authenticated %}
+                <li class="nav-item"><a class="nav-link link-light" href="/profile">Your Profile</a></li>
+                <li class="nav-item"><a class="nav-link link-light" href="/logout">logout</a></li>
+              {% else %}
+                <li class="nav-item"><a class="nav-link link-light" href="/login">Login</a></li>
+                <li class="nav-item"><a class="nav-link link-light" href="/signup">Signup</a></li>
+              {% endif %}
+            </ul>
+          </div>
+        </div>
+        <p class="text-center mb-0">&copy; AS Academy</p>
       </div>
     </footer>
     <script src="http://code.jquery.com/jquery.min.js"></script>
@@ -101,11 +131,16 @@
     <script>
     jQuery(document).ready(function($) {
         "use strict";
-        jQuery("a[data-rel^='prettyPhoto']").prettyPhoto({ social_tools: false });
+        $('.fixbottom').first().css({
+          'padding-bottom': ($(".footer").first().height() + 25) + 'px',
+        });
+
+        //jQuery("a[data-rel^='prettyPhoto']").prettyPhoto({ social_tools: false });
     });
     </script>
     {% block page_footer_scripts %}
     {% endblock %}
+  </div> <!-- page container should contain all the content to fix footer position -->
 </body>
 
 </html>

@@ -7,7 +7,16 @@ def index(request):
 	return render(request, "index.html")
 
 def booknow(request):
-	return render(request, "booknow.html")
+	return render(request, "booknow.html", {"items": [
+        {"img": "img/1.webp", "title": "KS2 SATs Buster Duo Course", "time": "Started Sep 13", "price": "£ 250"},
+        {"img": "img/2.webp", "title": "KS1 SATs Buster Duo Course", "time": "Started Sep 14", "price": "£ 250"},
+        {"img": "img/3.webp", "title": "1-to-1 English", "time": "1 hr", "price": "£ 25"},
+        {"img": "img/4.webp", "title": "1-to-1 Maths", "time": "1 hr", "price": "£ 25"},
+        {"img": "img/5.webp", "title": "1-to-1 Science", "time": "1 hr", "price": "£ 25"},
+        {"img": "img/6.webp", "title": "TutorPro 1-to-1 English", "time": "1 hr", "price": ""},
+        {"img": "img/7.webp", "title": "TutorPro 1-to-1 Maths", "time": "1 hr", "price": ""},
+        {"img": "img/8.webp", "title": "TutorPro 1-to-1 Science", "time": "1 hr", "price": ""},
+	]})
 
 def planspricing(request):
 	return render(request, "planspricing.html")

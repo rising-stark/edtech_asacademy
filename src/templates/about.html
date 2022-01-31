@@ -3,35 +3,41 @@
 {% load static %}
 
 {% block page_header_scripts %}
-  <link rel="stylesheet" href="{% static 'css/about.css' %}">
   <title>About us</title>
 {% endblock %}
 
 {% block content %}
 <section class="about" id="about">
   <div class="container">
-    <div class="heading text-center">
-      <h2>About
-        <span>As Academy</span></h2>
-      <p>AS Academy was founded in 2021 with one goal in mind: to develop study methods
-        that will help as many students as possible achieve academic excellence.
-      </p>
-    </div>
-    <div class="row">
-      <div class="col-lg-6">
-        <img src="{% static 'images/about.jpg' %}" alt="about" class="img-fluid">
+      <div class="col p-4 text-center">
+        <h1 class="display-1">AS <strong>Academy</strong></h1>
+        <div class="col d-flex justify-content-center">
+        <p class="lead w-50">AS Academy was founded in 2021 with one goal in mind: to develop study methods
+          that will help as many students as possible achieve academic excellence.</p>
+        </div>
       </div>
-      <div class="col-lg-6">
-        <h3>Top Quality Guidance</h3>
-        <p> Our trusted learning techniques, along with our skilled, enthusiastic teachers and
-          tutors, have ensured the success of hundreds of students.</p>
-        <br>
-        <h3>Our passion</h3>
-        <p>We believe in putting the student first, providing customised strategies that work.
-          We have a wide range of courses at different skills levels which can easily suit your schedule.
-          Contact us today so we can help you build your brighter future.</p>
+      <div class="row d-flex align-items-center bg-dark text-light rounded-pill mb-4">
+        <div class="col-lg-6 p-4 text-end">
+          <img src="{% static 'images/about.jpg' %}" alt="about" class="border border-success rounded-pill">
+        </div>
+        <div class="col-lg-6 text-start">
+          <h1>Top Quality Guidance</h1>
+          <p class="lead"> Our trusted learning techniques, along with our skilled, enthusiastic teachers and
+            tutors, have ensured the success of hundreds of students.</p>
+          <br>
+        </div>
       </div>
-    </div>
+      <div class="row d-flex align-items-center bg-secondary text-light rounded-pill mb-4">
+        <div class="col-lg-6  text-end">
+          <h1>Our passion</h1>
+          <p class="lead">We believe in putting the student first, providing customised strategies that work.
+            We have a wide range of courses at different skills levels which can easily suit your schedule.
+            Contact us today so we can help you build your brighter future.</p>
+        </div>
+        <div class="col-lg-6 p-4 text-start">
+          <img src="{% static 'img/about-2.jpg' %}" alt="about" class="border border-success rounded-pill">
+        </div>
+      </div>
   </div>
 </section>
 {% endblock %}

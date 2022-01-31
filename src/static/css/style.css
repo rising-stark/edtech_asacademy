@@ -750,9 +750,6 @@ h4.media-heading {
 ========================================= */
 
 
-.footer {
-	text-align: center;
-}
 .footer .contact input {
 	width: 100%;
 	height: 50px;
@@ -926,9 +923,21 @@ vertical-align: middle;
 	justify-content: space-between !important;
 }
 
+.fixbottom {
+	padding-bottom: 2.5rem;
+}
+
 .footer {
-	background: #373B44;  /* fallback for old browsers */
-	background: -webkit-linear-gradient(to right, #4286f4, #373B44);  /* Chrome 10-25, Safari 5.1-6 */
-	background: linear-gradient(to right, #4286f4, #373B44); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+	background: #348F50;  /* fallback for old browsers */
+	background: -webkit-linear-gradient(to right, #56B4D3, #348F50);  /* Chrome 10-25, Safari 5.1-6 */
+	background: linear-gradient(to right, #56B4D3, #348F50); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
 	color: #fff;
+	position: absolute;
+	bottom: 0;
+	width: 100%;
+}
+
+#page-container {
+	position: relative;
+	min-height: 100vh;  
 }
