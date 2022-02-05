@@ -135,6 +135,14 @@
           'padding-bottom': ($(".footer").first().height() + 25) + 'px',
         });
 
+        $(".booknow").click(function(){
+          $(this).parent().parent().next('div').show();
+        });
+
+        $(".cross span").click(function(){
+          $(this).parent().parent().hide();
+        });
+
         //jQuery("a[data-rel^='prettyPhoto']").prettyPhoto({ social_tools: false });
     });
     </script>

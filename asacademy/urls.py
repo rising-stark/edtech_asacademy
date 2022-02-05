@@ -17,10 +17,13 @@ urlpatterns = [
     path('planspricing/', views.planspricing, name='planspricing'),
     path('contact/', views.contact, name='contact'),
     path('addchild/', views.addchild, name='addchild'),
+    path('stripe_payment/', views.stripe_payment, name='stripe_payment'),
+    path('purchase_courses/', views.purchase_courses, name='purchase_courses'),
 
     # Post requests
     path('signup', views.signup, name='signup'),
     path('login', views.login, name='login'),
     path('contact', views.contact, name='contact'),
     path('addchild', views.addchild, name='addchild'),
+    path('stripe_payment', views.stripe_payment, name='stripe_payment'),
 ]

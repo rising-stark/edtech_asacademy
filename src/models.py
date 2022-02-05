@@ -29,6 +29,7 @@ class Courses(models.Model):
 	course_starts_at = models.DateTimeField(default=now)
 	course_ends_at = models.DateTimeField(blank=True, null=True)
 	course_price = models.IntegerField(default=0)
+	price_id = models.CharField(max_length=200, blank=True, null=True)
 
 # class Plans(models.Model):
 # 	plan_id = models.AutoField(primary_key=True)

@@ -33,7 +33,6 @@ $(document).ready(function() {
     itemsDesktop: [1199, 3],
     itemsDesktopSmall: [979, 3]
   });
-
 });
 
 jQuery(function($) {

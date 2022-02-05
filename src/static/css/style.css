@@ -829,7 +829,6 @@ vertical-align: middle;
 	margin: 0 -2px;
 	padding: 20px;
 	box-sizing: border-box;
-	cursor: pointer;
 	transition: 0.4s;
   }
   .service:hover{

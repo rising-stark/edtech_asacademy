@@ -1,22 +1,21 @@
+import json
+import stripe
+import numpy as np
+from django.core.mail import send_mail
+from django.conf import settings
+from django.views.generic import TemplateView
+from django.views.decorators.csrf import csrf_exempt
+from django.http import JsonResponse, HttpResponse
 from django.shortcuts import render, redirect
 from django.contrib import messages
 from django.contrib.auth.models import User, auth
+from django.db.models import Count
 from src.models import *
+
+stripe.api_key = settings.STRIPE_SECRET_KEY
 
 def index(request):
 	return render(request, "index.html")
-
-def booknow(request):
-	return render(request, "booknow.html", {"items": [
-        {"img": "img/1.webp", "title": "KS2 SATs Buster Duo Course", "time": "Started Sep 13", "price": "£ 250"},
-        {"img": "img/2.webp", "title": "KS1 SATs Buster Duo Course", "time": "Started Sep 14", "price": "£ 250"},
-        {"img": "img/3.webp", "title": "1-to-1 English", "time": "1 hr", "price": "£ 25"},
-        {"img": "img/4.webp", "title": "1-to-1 Maths", "time": "1 hr", "price": "£ 25"},
-        {"img": "img/5.webp", "title": "1-to-1 Science", "time": "1 hr", "price": "£ 25"},
-        {"img": "img/6.webp", "title": "TutorPro 1-to-1 English", "time": "1 hr", "price": ""},
-        {"img": "img/7.webp", "title": "TutorPro 1-to-1 Maths", "time": "1 hr", "price": ""},
-        {"img": "img/8.webp", "title": "TutorPro 1-to-1 Science", "time": "1 hr", "price": ""},
-	]})
 
 def planspricing(request):
 	return render(request, "planspricing.html")
@@ -102,18 +101,12 @@ def logout(request):
 	auth.logout(request)
 	return redirect('/')
 
-def profile(request):
-	if not request.user.is_authenticated:
-		messages.info(request, 'You need to be logged-in to access profile page.')
-		messages.info(request, 'Don\'t have an account yet? Signup now')
-		return redirect('login')
-
-	parent = Parents.objects.filter(parent=request.user)
+def get_student_details(parent):
 	students = None
 	if parent:
 		# If the logged-in user is a parent, then
 		# Retrieving all the courses and children from the database for this particualr user
-		students = Students.objects.filter(parent=parent[0])
+		students = Students.objects.filter(parent=parent)
 		for s in students:
 			user = User.objects.get(pk=s.student_id)
 			s.profile = Profiles.objects.get(user=user)
@@ -123,6 +116,23 @@ def profile(request):
 				print(c.course)
 				courses_enrolled.append(c.course)
 			s.courses = courses_enrolled
+	return students
+
+def get_children_count(parent):
+	children = Students.objects.filter(parent=parent).values("student_id").annotate(count=Count('student_id'))
+	children_count = 0
+	if children:
+		children_count = children[0]["count"]
+	return children_count
+
+def profile(request):
+	if not request.user.is_authenticated:
+		messages.info(request, 'You need to be logged-in to access profile page.')
+		messages.info(request, 'Don\'t have an account yet? Signup now')
+		return redirect('login')
+
+	parent = Parents.objects.get(parent=request.user)
+	students = get_student_details(parent)
 
 	return render(request, 'profile.html', {"students":students})
 
@@ -136,14 +146,12 @@ def addchild(request):
 		first_name = request.POST.get("first_name", "")
 		last_name = request.POST.get("last_name", "")
 		dob = request.POST.get("dob",  "")
-		
 		try:
 			parent = Parents.objects.filter(parent=request.user)[0]
 		except IndexError:
 			messages.info(request, 'You are not a parent.')
 			return redirect('profile')
-		children = Students.objects.filter(parent=parent)
-		username = request.user.username + "_child_" + str(children.count)
+		username = request.user.username + "_child_" + str(get_children_count(parent))
 		print("username = ", username)
 
 		# Create a new user with the given details
@@ -160,3 +168,66 @@ def addchild(request):
 		return redirect('profile')
 
 	return render(request, "addchild.html")
+
+def booknow(request):
+	parent = Parents.objects.get(parent=request.user)
+	courses = Courses.objects.all()
+	children_count = False
+	if parent:
+		# If the logged-in user is a parent, then
+		# this creates a mapping of courses in which the children of this parent are NOT enrolled in as (key, value) = (course_id, list of children NOT enrolled)
+		students = Students.objects.filter(parent=parent)
+		if students and courses:
+			children_count = True
+			for c in courses:
+				c.img = "img/"+str(c.course_id)+".webp"
+				student_list = []
+				for s in students:
+					t = Takes.objects.filter(student=s, course=c)
+					if not t:
+						user = User.objects.get(pk=s.student_id)
+						s.profile = Profiles.objects.get(user=user)
+						student_list.append(s)
+				c.students = student_list
+	return render(request, "booknow.html", {"courses":courses, "children_count":children_count, "currency": "$"})
+
+def purchase_courses(request):
+	course_id = request.GET.get("course_id")
+	children = request.GET.get("children")
+	course = Courses.objects.get(course_id=int(course_id))
+	for c in children.split(","):
+		child = Students.objects.get(pk=int(c))
+		t = Takes.objects.create(student=child, course=course)
+		t.save()
+	return redirect('profile')
+
+def stripe_payment(request):
+	if request.method == "POST":
+		course_id = int(request.POST.get("course_id", -1))
+		children = request.POST.getlist('children')
+		children = ','.join(children)
+
+		if course_id == -1:
+			return redirect("/booknow")
+		course = Courses.objects.get(course_id=course_id)
+		checkout_session = ""
+		YOUR_DOMAIN = 'http://localhost:8000'
+		try:
+			checkout_session = stripe.checkout.Session.create(
+				line_items=[
+					{
+						# Provide the exact Price ID (for example, pr_1234) of the product you want to sell
+						'price': course.price_id,
+						'quantity': len(children),
+					},
+				],
+				mode='payment',
+				success_url=YOUR_DOMAIN + '/purchase_courses?children='+str(children)+'&course_id='+str(course_id),
+				cancel_url=YOUR_DOMAIN + '/booknow',
+			)
+		except Exception as e:
+			print("we are in an exception")
+			print(e)
+
+		return redirect(checkout_session.url, code=303)
+	return redirect('booknow')
