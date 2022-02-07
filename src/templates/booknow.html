@@ -46,7 +46,7 @@
       <form id="form_{{course.course_id}}" action="/stripe_payment" method="POST" class="service card rounded border border-success mx-3">
         {% csrf_token %}
         <input type="hidden" name="course_id" value="{{course.course_id}}">
-        <img class="card-img-top" src="{% static course.img %}">
+        <img class="card-img-top" src="{% static 'img/' %}{{forloop.counter}}.webp">
         <div class="card-body">
           <h5 class="card-title">{{ course.course_name }}</h5>
           <div class="card-text">
@@ -59,25 +59,29 @@
         </div>
         <div id="choosechild_{{course.course_id}}" class="choose_child card card-img-overlay">
           <div id="cross_{{course.course_id}}" class="cross"><span>&times;</span></div>
-          {% if children_count %}
-            {% if course.students %}
-              <ul>
-                {% for child in course.students %}
-                  <li>
-                    <input type="checkbox" name="children" class="child_{{course.course_id}}"  value={{child.id}}>&nbsp;{{child.profile.first_name}} {{child.profile.last_name}}
-                  </li>
-                {% endfor %}
-              </ul>
-              <input type="submit" class="btn btn-success proceed" value="Proceed">
+          {% if request.user.is_authenticated %}
+            {% if children_count %}
+              {% if course.students %}
+                <ul>
+                  {% for child in course.students %}
+                    <li>
+                      <input type="checkbox" name="children" class="child_{{course.course_id}}"  value={{child.id}}>&nbsp;{{child.profile.first_name}} {{child.profile.last_name}}
+                    </li>
+                  {% endfor %}
+                </ul>
+                <input type="submit" class="btn btn-success proceed" value="Proceed">
+              {% else %}
+                <h3>
+                  All your children are already enrolled in this course
+                  <br>
+                  <a class="btn btn-info" href="/addchild">Add child</a>
+                </h3>
+              {% endif %}
             {% else %}
-              <h3>
-                All your children are already enrolled in this course
-                <br>
-                <a class="btn btn-info" href="/addchild">Add child</a>
-              </h3>
+              <h3>You need to add a child first. <a class="btn btn-primary" href="/addchild">Add child</a></h3>
             {% endif %}
           {% else %}
-            <h3>You need to add a child first. <a class="btn btn-primary" href="/addchild">Add child</a></h3>
+            <h3>You need to be logged in to buy a course <a class="btn btn-primary" href="/login">Redirect to login/signup page</a></h3>
           {% endif %}
         </div>
       </form>

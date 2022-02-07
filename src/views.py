@@ -138,7 +138,7 @@ def profile(request):
 
 def addchild(request):
 	if not request.user.is_authenticated:
-		messages.info(request, 'You need to be logged-in to access your tasks.')
+		messages.info(request, 'You need to be logged-in to access your profile.')
 		messages.info(request, 'Don\'t have an account yet? Signup now')
 		return redirect('login')
 
@@ -170,8 +170,12 @@ def addchild(request):
 	return render(request, "addchild.html")
 
 def booknow(request):
-	parent = Parents.objects.get(parent=request.user)
 	courses = Courses.objects.all()
+
+	if not request.user.is_authenticated:
+		return render(request, "booknow.html", {"courses":courses, "currency": "$"})
+
+	parent = Parents.objects.get(parent=request.user)
 	children_count = False
 	if parent:
 		# If the logged-in user is a parent, then
@@ -180,7 +184,6 @@ def booknow(request):
 		if students and courses:
 			children_count = True
 			for c in courses:
-				c.img = "img/"+str(c.course_id)+".webp"
 				student_list = []
 				for s in students:
 					t = Takes.objects.filter(student=s, course=c)
@@ -192,6 +195,11 @@ def booknow(request):
 	return render(request, "booknow.html", {"courses":courses, "children_count":children_count, "currency": "$"})
 
 def purchase_courses(request):
+	if not request.user.is_authenticated:
+		messages.info(request, 'You need to be logged-in to access your profile.')
+		messages.info(request, 'Don\'t have an account yet? Signup now')
+		return redirect('login')
+
 	course_id = request.GET.get("course_id")
 	children = request.GET.get("children")
 	course = Courses.objects.get(course_id=int(course_id))
@@ -202,6 +210,11 @@ def purchase_courses(request):
 	return redirect('profile')
 
 def stripe_payment(request):
+	if not request.user.is_authenticated:
+		messages.info(request, 'You need to be logged-in to access your profile.')
+		messages.info(request, 'Don\'t have an account yet? Signup now')
+		return redirect('login')
+
 	if request.method == "POST":
 		course_id = int(request.POST.get("course_id", -1))
 		children = request.POST.getlist('children')
