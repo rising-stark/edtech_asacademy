@@ -700,19 +700,19 @@ h4.media-heading {
 
 
 .price { text-align: center }
-.price.panel-default { border-color: #FFF;background-color: #EDEDED;}
+.price.panel-default { border-color: #FFF;background-color: #EDEDED; margin-left:43%; width:70%;}
 .price.panel-default > .panel-heading {
     font-size: 20px;
     text-transform: uppercase;
     font-weight: 400;
     color: #282828;
-    background-color: #E1E1E1;
+    background-color: #fabebe;
     border-color: inherit;
 }
 .price .panel-heading { padding: 30px 15px }
 .price .panel-body { border-bottom: 1px solid; border-color: #DBDBDB;}
 .price ul.list-unstyled {
-	text-align: left !important;
+	text-align: center !important;
 	padding: 20px;
 }
 .price ul.list-unstyled li {
@@ -727,15 +727,15 @@ h4.media-heading {
 .price.featured.panel-default {
     border-color: #0099FF;
     background-color: #EDEDED;
-    margin-top: -20px;
+    margin-top: 0px;
     position: relative;
     z-index: 1;
-    margin-left: -5px;
-    margin-right: -5px;
+	width: 80%;
+    margin-left: 110px;
 }
 .price.featured.panel-default { border-color: #FFFFFF;}
-.price.featured.panel-default > .panel-heading { background-color: #4B4B4B;color: #fff;}
-.featured .panel-body { margin-top: 20px }
+.price.featured.panel-default > .panel-heading { background-color: #66a8c7;color: #fff;}
+.featured .panel-body { margin-top: 0px }
 .featured .panel-body,
 .featured.panel-default > .panel-heading { }
 .featured .tf-btn { margin-top: 20px }
