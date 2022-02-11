@@ -16,7 +16,7 @@
     <!-- Custom stylesheet -->
     <link href="{% static 'css/style.css' %}" rel="stylesheet">
     <!-- Custom Responsive stylesheet -->
-    <link href="{% static 'css/responsive.css' %}" rel="stylesheet">
+    <!-- <link href="{% static 'css/responsive.css' %}" rel="stylesheet"> -->
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
     <!--[if lt IE 9]>
@@ -105,27 +105,21 @@
         <p class="text-center mb-0">&copy; AS Academy</p>
       </div>
     </footer>
-    <script src="http://code.jquery.com/jquery.min.js"></script>
-    <script src="{% static 'js/jquery.js' %}"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-one-page-nav/3.0.0/jquery.nav.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-localScroll/2.0.0/jquery.localScroll.min.js"></script>
     <!-- Modernizr js -->
     <script src="{% static 'js/modernizr-latest.js' %}"></script>
     <!-- Bootstrap 3.2.0 js -->
-    <script src="{% static 'js/bootstrap.min.js' %}"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.1.3/js/bootstrap.min.js"></script>
     <!-- Owl Carousel plugin -->
     <script src="{% static 'js/owl.carousel.min.js' %}"></script>
     <!-- ScrollTo js -->
     <script src="{% static 'js/jquery.scrollto.min.js' %}"></script>
-    <!-- LocalScroll js -->
-    <script src="{% static 'js/jquery.localScroll.min.js' %}"></script>
     <!-- jQuery Parallax plugin -->
     <script src="{% static 'js/jquery.parallax-1.1.3.js' %}"></script>
     <!-- Skrollr js plugin -->
-    <script src="{% static 'js/skrollr.min.js' %}"></script>
-    <!-- jQuery Pretty Photo Plugin -->
-    <script src="{% static 'js/jquery.prettyPhoto.js' %}"></script>
-    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+    <script src="{% static 'js/skrollr.min.js' %}"></script>        
     <!-- Custom JS -->
     <script src="{% static 'js/main.js' %}"></script>
     <script>
@@ -142,8 +136,6 @@
         $(".cross span").click(function(){
           $(this).parent().parent().hide();
         });
-
-        //jQuery("a[data-rel^='prettyPhoto']").prettyPhoto({ social_tools: false });
     });
     </script>
     {% block page_footer_scripts %}
