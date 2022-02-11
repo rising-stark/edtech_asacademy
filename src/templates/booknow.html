@@ -43,7 +43,8 @@
   </div>
   <div class="row d-flex">
     {% for course in courses %}
-      <form id="form_{{course.course_id}}" action="/stripe_payment" method="POST" class="service card rounded border border-success mx-3">
+    <div class="" >
+      <form id="form_{{course.course_id}}" action="/stripe_payment" method="POST" class="col-sm-2 col-md-3 col-lg-8 service card rounded border border-success">
         {% csrf_token %}
         <input type="hidden" name="course_id" value="{{course.course_id}}">
         <img class="card-img-top" src="{% static 'img/' %}{{forloop.counter}}.webp">
@@ -85,6 +86,7 @@
           {% endif %}
         </div>
       </form>
+    </div>
     {% endfor %}
   </div>
 </div>
