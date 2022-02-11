@@ -1,6 +1,5 @@
 import json
 import stripe
-import numpy as np
 from django.core.mail import send_mail
 from django.conf import settings
 from django.views.generic import TemplateView
