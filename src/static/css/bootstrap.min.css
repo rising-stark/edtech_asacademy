@@ -1364,10 +1364,10 @@ a.bg-primary:hover {
   background-color: #286090;
 }
 .bg-success {
-  background-color: #dff0d8;
+  background-color: #ecbcff;
 }
 a.bg-success:hover {
-  background-color: #c1e2b3;
+  background-color: #cfb5cb;
 }
 .bg-info {
   background-color: #d9edf7;
@@ -1588,10 +1588,7 @@ pre code {
   margin-right: auto;
   margin-left: auto;
 }
-.row {
-  margin-right: -15px;
-  margin-left: -15px;
-}
+
 .col-xs-1, .col-sm-1, .col-md-1, .col-lg-1, .col-xs-2, .col-sm-2, .col-md-2, .col-lg-2, .col-xs-3, .col-sm-3, .col-md-3, .col-lg-3, .col-xs-4, .col-sm-4, .col-md-4, .col-lg-4, .col-xs-5, .col-sm-5, .col-md-5, .col-lg-5, .col-xs-6, .col-sm-6, .col-md-6, .col-lg-6, .col-xs-7, .col-sm-7, .col-md-7, .col-lg-7, .col-xs-8, .col-sm-8, .col-md-8, .col-lg-8, .col-xs-9, .col-sm-9, .col-md-9, .col-lg-9, .col-xs-10, .col-sm-10, .col-md-10, .col-lg-10, .col-xs-11, .col-sm-11, .col-md-11, .col-lg-11, .col-xs-12, .col-sm-12, .col-md-12, .col-lg-12 {
   position: center;
   min-height: 1px;
@@ -3871,7 +3868,7 @@ select[multiple].input-group-sm > .input-group-btn > .btn {
 .nav > li > a:hover,
 .nav > li > a:focus {
   text-decoration: none;
-  background-color: #eee;
+  background-color: rgb(0, 0, 0);
 }
 .nav > li.disabled > a {
   color: #777;
@@ -3886,7 +3883,7 @@ select[multiple].input-group-sm > .input-group-btn > .btn {
 .nav .open > a,
 .nav .open > a:hover,
 .nav .open > a:focus {
-  background-color: #eee;
+  background-color: rgb(0, 0, 0);
   border-color: #337ab7;
 }
 .nav .nav-divider {
@@ -4067,6 +4064,7 @@ select[multiple].input-group-sm > .input-group-btn > .btn {
 .navbar-collapse {
   padding-right: 15px;
   padding-left: 15px;
+  text-align: center;
   overflow-x: visible;
   -webkit-overflow-scrolling: touch;
   border-top: 1px solid transparent;

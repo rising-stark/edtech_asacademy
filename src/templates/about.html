@@ -8,34 +8,39 @@
 
 {% block content %}
 <section class="about" id="about">
-  <div class="container">
+  <div id="centre" class="container">
       <div class="col p-md-4 text-center">
-        <h1 class="display-1">AS <strong>Academy</strong></h1>
-        <div class="col d-flex justify-content-center">
+        <h1 class="display-1">How it <strong>Works</strong></h1>
+        <div class="underline"></div>
+        <div class="col d-flex justify-content-center ">
         <p class="lead w-50">AS Academy was founded in 2021 with one goal in mind: to develop study methods
-          that will help as many students as possible achieve academic excellence.</p>
+          that will help as many students as possible achieve academic excellence. 
+        Students can take advantage of both the centre and online website, to aid their
+      learning journey.</p>
         </div>
       </div>
-      <div class="row p-4 d-flex align-items-center bg-dark text-light rounded mb-md-4">
+      <div class="row p-4 d-flex align-items-center bg-dark text-light rounded mb-md-4 services13">
         <div class="col-lg-6 p-md-4 text-end">
-          <img src="{% static 'images/about.jpg' %}" alt="about" class="border border-success rounded">
+          <img src="{% static 'images/about.jpg' %}" alt="about" class=" rounded">
         </div>
         <div class="col-lg-6 text-start">
-          <h1>Top Quality Guidance</h1>
-          <p class="lead"> Our trusted learning techniques, along with our skilled, <br>enthusiastic teachers and
-            tutors, have ensured the success<br> of hundreds of students.</p>
+          <h1>Centre tutoring</h1>
+          <p class="lead"> Our in-person centre is currently based in London, here we
+            deliver tutoring services for students between 7 and 16. Call us at 07868 886152, 
+            if you're interested in centre tuition for your child.
+          </p>
           <br>
         </div>
       </div>
-      <div class="row p-4 d-flex align-items-center bg-secondary text-light rounded mb-md-4">
+      <div id="online" class="row p-4 d-flex align-items-center bg-secondary text-light rounded mb-md-4 services13">
         <div class="col-lg-6  text-end">
-          <h1>Our passion</h1>
-          <p class="lead">We believe in putting the student first, providing customised strategies that work.
-            We have a wide range of courses at <br>different skills levels which can easily suit your schedule.
-            <br> Contact us today so we can help you build your brighter future.</p>
+          <h1>Online tutoring</h1>
+          <p class="lead">Through our online website, you can book online lessons, courses, purchase membership plans and keep track
+            of your child's progress through emails from tutors.
+          </p>
         </div>
         <div class="col-lg-6 p-md-4 text-start">
-          <img src="{% static 'img/about-2.jpg' %}" alt="about" class="border border-success rounded">
+          <img src="{% static 'images/about2.png' %}" alt="about" class=" rounded">
         </div>
       </div>
   </div>
