@@ -1024,7 +1024,8 @@ margin-bottom: 100px;
 	background-color: rgb(255, 43, 43);
 }
 .d-flex {
-	display: flex !important;
+	width: 110%;
+
 }
 
 .valign-center {
@@ -1283,16 +1284,19 @@ margin-bottom: 100px;
 
 
 .courses {
-	width: 960px;
+	width: 10%;
 	margin-right: auto;
 	margin-left: auto;
+	margin-top: 10%;
 	
 	display: flex;
 	flex-direction: column;
   }
   
   .course {
+	  width: 10%;
 	margin-top: 70px;
+	margin-left: 1.4%;
 	display: flex;
 	flex-wrap: wrap;
   }

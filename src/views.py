@@ -191,7 +191,7 @@ def booknow(request):
 						s.profile = Profiles.objects.get(user=user)
 						student_list.append(s)
 				c.students = student_list
-	return render(request, "booknow.html", {"courses":courses, "children_count":children_count, "currency": "$"})
+	return render(request, "booknow.html", {"courses":courses, "children_count":children_count, "currency": "£"})
 
 def purchase_courses(request):
 	if not request.user.is_authenticated:

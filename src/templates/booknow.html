@@ -3,14 +3,15 @@
 {% load static %}
 
 {% block page_header_scripts %}
-<title>Services</title>
+<title>Book online</title>
 {% endblock %}
 
 {% block content %}
 <style type="text/css">
+  
   .choose_child{
     width: 90%;
-    height: 100%;
+    height: 20%;
     position: absolute;
     top: 0;
     left: 0;
@@ -21,7 +22,8 @@
   }
 
   .choose_child .cross{
-    text-align: right;
+    text-align: center;
+  
   }
 
   .choose_child .cross span{
@@ -29,30 +31,44 @@
   }
 
   .choose_child h3{
-    position:  relative;
-    top: 40%;
-    text-align: center;
+    position: absolute;
+    top: 10%;
+    margin-left: 100%;
   }
 </style>
-<div class="container">
-  <div class="row mt-4">
-    <div class="col text-center">
-      <h1>Our Services</h1>
-      <p class="lead">We provide best educational services to you.</p>
-    </div>
-  </div>
-  <div class="row d-flex">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
     {% for course in courses %}
     <div class="" >
-      <form id="form_{{course.course_id}}" action="/stripe_payment" method="POST" class="col-sm-2 col-md-3 col-lg-8 service card rounded border border-success">
+      <form id="form_{{course.course_id}}" action="/stripe_payment" method="POST" class="rounded services0">
         {% csrf_token %}
         <input type="hidden" name="course_id" value="{{course.course_id}}">
-        <img class="card-img-top" src="{% static 'img/' %}{{forloop.counter}}.webp">
+        <img src="{% static course.course_img %}">
+
         <div class="card-body">
           <h5 class="card-title">{{ course.course_name }}</h5>
           <div class="card-text">
-            <div class="d-flex justify-content-between">
-              <p>Course starts at: {{ course.course_starts_at }}</p>
+            <div class="">
+     <p>        {{ course.course_desc }}</p> 
+     <div class=" d-flex">
               <p>{{currency}}{{ course.course_price }}</p>
             </div>
             <input type="button" class="btn btn-primary w-100 booknow" value="Book Now">
@@ -60,12 +76,14 @@
         </div>
         <div id="choosechild_{{course.course_id}}" class="choose_child card card-img-overlay">
           <div id="cross_{{course.course_id}}" class="cross"><span>&times;</span></div>
+          <p>Which child is this course for?</p>
           {% if request.user.is_authenticated %}
             {% if children_count %}
               {% if course.students %}
                 <ul>
                   {% for child in course.students %}
                     <li>
+                      
                       <input type="checkbox" name="children" class="child_{{course.course_id}}"  value={{child.id}}>&nbsp;{{child.profile.first_name}} {{child.profile.last_name}}
                     </li>
                   {% endfor %}
