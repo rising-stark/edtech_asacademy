@@ -20,7 +20,7 @@
 <section id="login_section">
   <div class="container">
     <div class="user signinBx">
-      <div class="imgBx"><img src="{% static 'images/book.png' %}" /></div>
+      <div class="imgBx"><img src="{% static 'images/signin.png' %}" /></div>
       <div class="formBx">
         <form method="POST" action="/login">
           {% csrf_token %}
@@ -40,7 +40,7 @@
       <div class="formBx">
         <form method="POST" action="/signup">
           {% csrf_token %}
-          <h2>Create an Account!</h2>
+          <h2>Create a parent account</h2>
           <input type="text" name="username" placeholder="Username" />
           <input type="email" name="email" placeholder="Email Id" />
           <input type="password" name="password" placeholder="Create Password" />
@@ -52,7 +52,7 @@
           </p>
         </form>
       </div>
-      <div class="imgBx"><img src="{% static 'images/closedbook.png' %}" /></div>
+      <div class="imgBx"><img src="{% static 'images/signup.png' %}" /></div>
     </div>
   </div>
 </section>
