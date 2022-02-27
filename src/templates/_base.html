@@ -127,7 +127,7 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-localScroll/2.0.0/jquery.localScroll.min.js"></script>
     <!-- Modernizr js -->
     <script src="{% static 'js/modernizr-latest.js' %}"></script>
-    <!-- Bootstrap 3.2.0 js -->
+    <!-- Bootstrap 5.1.3 js -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.1.3/js/bootstrap.min.js"></script>
     <!-- Owl Carousel plugin -->
     <script src="{% static 'js/owl.carousel.min.js' %}"></script>
@@ -147,7 +147,9 @@
         });
 
         $(".booknow").click(function(){
-          $(this).parent().parent().next('div').show();
+          $(this).parent().parent().next('div.choosechild_wrapper').css({
+            "display": "flex",
+          });
         });
 
         $(".cross span").click(function(){

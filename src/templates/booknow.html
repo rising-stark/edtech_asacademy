@@ -8,32 +8,37 @@
 
 {% block content %}
 <style type="text/css">
-  
-  .choose_child{
-    width: 90%;
-    height: 20%;
-    position: absolute;
+  .choosechild_wrapper {
+    width: 100%;
+    height: 100vh;
     top: 0;
     left: 0;
+    position:fixed;
+    z-index: 100000;
+    display: none;
+    justify-content: center;
+    align-items: center;
+    padding: 25%;
+  }
+
+  .choose_child {
+    padding: 10px;
+    width: 100%;
     background: rgba(0, 0, 0, 0.8);
     color: #fff;
-    margin: auto;
-    display: none;
+  }
+
+  .choose_child h3 {
+    color: #fff;
   }
 
   .choose_child .cross{
-    text-align: center;
+    text-align: right;
   
   }
 
   .choose_child .cross span{
     cursor: pointer;
-  }
-
-  .choose_child h3{
-    position: absolute;
-    top: 10%;
-    margin-left: 100%;
   }
 </style>
 
@@ -56,7 +61,8 @@
             <input type="button" class="btn btn-primary w-100 booknow" value="Book Now">
           </div>
         </div>
-        <div id="choosechild_{{course.course_id}}" class="choose_child card card-img-overlay">
+        <div class="choosechild_wrapper">
+        <div id="choosechild_{{course.course_id}}" class="choose_child card">
           <div id="cross_{{course.course_id}}" class="cross"><span>&times;</span></div>
           <p>Which child is this course for?</p>
           {% if request.user.is_authenticated %}
@@ -85,10 +91,11 @@
             <h3>You need to be logged in to buy a course <a class="btn btn-primary" href="/login">Redirect to login/signup page</a></h3>
           {% endif %}
         </div>
+        </div>
       </form>
     </div>
-    {% endfor %}
   </div>
+    {% endfor %}
   </div>
 </div>
 {% endblock %}
