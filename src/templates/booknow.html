@@ -37,27 +37,9 @@
   }
 </style>
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+  <div class="row d-row align-items-start justify-content-start">
     {% for course in courses %}
-    <div class="" >
+    <div class="col-sm-2 m-sm-3">
       <form id="form_{{course.course_id}}" action="/stripe_payment" method="POST" class="rounded services0">
         {% csrf_token %}
         <input type="hidden" name="course_id" value="{{course.course_id}}">
@@ -106,6 +88,7 @@
       </form>
     </div>
     {% endfor %}
+  </div>
   </div>
 </div>
 {% endblock %}

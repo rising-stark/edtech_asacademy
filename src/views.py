@@ -10,6 +10,7 @@ from django.contrib import messages
 from django.contrib.auth.models import User, auth
 from django.db.models import Count
 from src.models import *
+from django.core import exceptions
 
 stripe.api_key = settings.STRIPE_SECRET_KEY
 
@@ -173,8 +174,13 @@ def booknow(request):
 
 	if not request.user.is_authenticated:
 		return render(request, "booknow.html", {"courses":courses, "currency": "$"})
-
-	parent = Parents.objects.get(parent=request.user)
+	
+	try:
+		parent = Parents.objects.get(parent=request.user)
+	except exceptions.ObjectDoesNotExist:
+		# Logged in user is not parent.
+		return render(request, "booknow.html", {"courses":courses, "currency": "£"})
+	
 	children_count = False
 	if parent:
 		# If the logged-in user is a parent, then
