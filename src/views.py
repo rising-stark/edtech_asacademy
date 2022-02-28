@@ -173,7 +173,7 @@ def booknow(request):
 	courses = Courses.objects.all()
 
 	if not request.user.is_authenticated:
-		return render(request, "booknow.html", {"courses":courses, "currency": "$"})
+		return render(request, "booknow.html", {"courses":courses, "currency": "£"})
 	
 	try:
 		parent = Parents.objects.get(parent=request.user)
@@ -223,6 +223,12 @@ def stripe_payment(request):
 	if request.method == "POST":
 		course_id = int(request.POST.get("course_id", -1))
 		children = request.POST.getlist('children')
+		print("children here = ", children)
+
+		if not children:
+			messages.info(request, 'You need to select atleast 1 child')
+			return redirect('booknow')
+			
 		children = ','.join(children)
 
 		if course_id == -1:
