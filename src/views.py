@@ -113,17 +113,12 @@ def get_student_details(parent):
 			courses = Takes.objects.filter(student=s)
 			courses_enrolled = []
 			for c in courses:
-				print(c.course)
 				courses_enrolled.append(c.course)
 			s.courses = courses_enrolled
 	return students
 
 def get_children_count(parent):
-	children = Students.objects.filter(parent=parent).values("student_id").annotate(count=Count('student_id'))
-	children_count = 0
-	if children:
-		children_count = children[0]["count"]
-	return children_count
+	return Students.objects.filter(parent=parent).count()
 
 def profile(request):
 	if not request.user.is_authenticated:
@@ -152,7 +147,6 @@ def addchild(request):
 			messages.info(request, 'You are not a parent.')
 			return redirect('profile')
 		username = request.user.username + "_child_" + str(get_children_count(parent))
-		print("username = ", username)
 
 		# Create a new user with the given details
 		user = User.objects.create_user(username=username, password=request.user.password)
@@ -223,7 +217,6 @@ def stripe_payment(request):
 	if request.method == "POST":
 		course_id = int(request.POST.get("course_id", -1))
 		children = request.POST.getlist('children')
-		print("children here = ", children)
 
 		if not children:
 			messages.info(request, 'You need to select atleast 1 child')
