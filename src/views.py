@@ -219,7 +219,7 @@ def stripe_payment(request):
 		children = request.POST.getlist('children')
 
 		if not children:
-			messages.info(request, 'You need to select atleast 1 child')
+			messages.info(request, 'You need to select atleast 1 child.')
 			return redirect('booknow')
 			
 		children = ','.join(children)
