@@ -31,45 +31,48 @@
     {% endblock %}
 </head>
 <div class="headerhigh">
+  <form class="d-flex">
+    <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+      {% if request.user.is_authenticated %}
+        <li class="nav-item5"><a class="nav-link" href="/profile">Welcome, <b><em>{{ request.user}}</em></b>&nbsp;&nbsp;<i class="fa fa-user"></i></a></li>
+        <li class="nav-item4"><a class="nav-link" href="/logout">logout</a></li>
+      {% else %}
+        <li class="nav-item4"><a class="nav-link" href="/login">Login</a></li>
+        <li class="nav-item500"><a class="nav-link btn-light  custom-btn" href="/signup">Signup</a></li>
+      {% endif %}
+    </ul>
+</form>
 <a href="tel:07868 886152" class="h5new">📱 07868 886152</a>
 <a href="/home"><img class="logo" src="{% static 'images/logoas.png' %}" alt="logo"></a>
 <br><br><br><br><br><br>
 </div>
 <body>
-    <div id="page-container">
-      <nav class="navbar sticky-top navbar-expand-lg ">
-          <div class="container">
-        
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-              <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+  <header class="nav">
+
+    <div id="logo-title">
+
+    </div>
+
+</div>
+</div>
+      <nav id="menu"class="navbar sticky-top navbar-expand-lg mobile-menu">
+
+    
               <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                   <li class="nav-item1"><a class="nav-link" href="/booknow">Book Online</a></li>
                   <li class="nav-item2"><a class="nav-link" href="/planspricing">Memberships</a></li>
                   <li class="nav-item3"><a class="nav-link" href="/about">How it works</a></li>
                   <li class="nav-item6"><a class="nav-link" href="/home#contact">Contact us</a></li>
-                  
-                  
-           
-       
-                  
-              
-              </ul>
-              <form class="d-flex">
-                  <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-                    {% if request.user.is_authenticated %}
-                      <li class="nav-item5"><a class="nav-link" href="/profile">Welcome, <b><em>{{ request.user}}</em></b>&nbsp;&nbsp;<i class="fa fa-user"></i></a></li>
-                      <li class="nav-item4"><a class="nav-link" href="/logout">logout</a></li>
-                    {% else %}
-                      <li class="nav-item4"><a class="nav-link" href="/login">Login</a></li>
-                      <li class="nav-item5"><a class="nav-link btn-light  custom-btn" href="/signup">Signup</a></li>
-                    {% endif %}
                   </ul>
-              </form>
-            </div>
-          </div>
+          
         </nav>
+             
+      
+    
+              
+        
+              <img tabindex="0" id="menu-icon" src="https://assets.codepen.io/5044406/menu-icon.png" onclick="mobileMenu()" />
+          </header>
     
       {% if messages %}
           <div class="container">
