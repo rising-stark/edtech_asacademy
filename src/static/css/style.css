@@ -100,15 +100,23 @@ top: -40%;
 
 .nav-item4 {
 	position:absolute;
-	left:79.8%;
+	left:160%;
 	top:5%;
 	list-style: none;
 }
-
 .nav-item5 {
 	position:absolute;
-	left:79.5%;
-	top: 10%;
+	left:159.5%;
+	width: 10%;
+	text-align: center;
+	top: 50%;
+	list-style: none;
+}
+.nav-item500 {
+	position:absolute;
+	left:159.5%;
+	width: 100%;
+	top: 50%;
 	list-style: none;
 }
 
@@ -1094,15 +1102,19 @@ textarea:focus {
 
 
 .headerhigh {
+	position: relative;
+	width: 50%;
+	height: 100px;
+
 }
 
 .logo {
 	position:absolute;
 	
-left:730px;
-top: -6px;
-width: 16.5%;
-height: 20%;
+left:92%;
+top: -15%;
+width: 31.5%;
+height: 150%;
 margin-bottom: 100px;
 }
 
@@ -1120,7 +1132,7 @@ margin-bottom: 100px;
 	position:absolute;
 	
 left:54%;
-top: 211.8%;
+top: 203.8%;
 width: 25%;
 
 margin-bottom: 100px;
@@ -1130,22 +1142,31 @@ margin-bottom: 100px;
 	position:absolute;
 	
 left:14%;
-top:316%;
+top:249%;
 width: 31%;
 
 margin-bottom: 100px;
 }
-
+.container23{
+	position: relative;
+	margin-left: 55%;
+}
+.container42{
+	position: relative;
+	margin-left: 10%;
+}
 .logo5 {
 	position:absolute;
 left:56%;
-top: 477.5%;
+top: 387.5%;
 width: 34%;
 
 margin-bottom: 100px;
 }
 
-
+.text-left22{
+	text-align: left;
+}
 
 #contact{
     padding:10px 0 10px;
@@ -1314,7 +1335,7 @@ input {
 
 .navbar {
 	width: 100%;
-	top: 30px;
+	top: 40%;
 	border-bottom: 3px #c9948c solid !important;
 	height: 48px;
 	display: flex;
@@ -1745,7 +1766,7 @@ input {
 
 /* navbar base.html */
 
-@media screen and (max-width: 1000px){
+@media screen and (max-width: 700px){
 
 	
 .headerhigh {
@@ -1853,14 +1874,15 @@ visibility: hidden;
 	position:absolute;
 	left:90.5%;
 	top: -40%;
-	width: 130%;
+	text-align: center;
+	width: 40%;
 	list-style: none;
 }
 .nav-item500{
 	position:absolute;
-	left:120.5%;
+	left:90.5%;
 	top: -40%;
-	width: 30%;
+	width: 140%;
 	list-style: none;
 }
 
@@ -2144,5 +2166,8 @@ width: 35%;
 	-o-transition: all 0.3s;
 	transition: all 0.3s;
 }
-
+.container23{
+	position: relative;
+margin-left:0%;
+}
 }
