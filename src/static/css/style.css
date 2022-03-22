@@ -1129,23 +1129,21 @@ margin-bottom: 100px;
 }
 
 .logo3 {
-	position:absolute;
+position:absolute;
 	
-left:54%;
-top: 203.8%;
+right:0;
+top: auto;
 width: 25%;
 
-margin-bottom: 100px;
+
 }
 
 .logo4 {
-	position:absolute;
-	
-left:14%;
-top:249%;
+left:0;
+top:auto;
 width: 31%;
-
-margin-bottom: 100px;
+padding-left:50px;
+position: absolute;
 }
 .container23{
 	position: relative;
@@ -1155,14 +1153,24 @@ margin-bottom: 100px;
 	position: relative;
 	margin-left: 10%;
 }
+
+#contact {
+	
+}
+
 .logo5 {
-	position:absolute;
+	/* position:absolute;
 left:56%;
-top: 387.5%;
+top: 311.5%;
 width: 34%;
 
-margin-bottom: 100px;
+margin-bottom: 100px; */
+
+float:right;
+margin-top: -180px;
+
 }
+
 
 .text-left22{
 	text-align: left;
