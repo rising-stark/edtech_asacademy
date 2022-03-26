@@ -11,7 +11,6 @@
   <div class="price section-padding dark-bg">
     <div class="container">
       <!-- container -->
-
         <h2 class="h2new text-center">Choose your<strong><span style="color: #EE9A8F"> Membership plan</span></strong></h2>
         <br> <br>
         <div class="underline"></div>
@@ -24,6 +23,10 @@
           <div class="row">
             <!-- nested row -->
             <div class="col-md-6">
+            <form action="/stripe_payment" method="POST">
+              {% csrf_token %}
+              <input type="hidden" name="buy_type" value="plan">
+              <input type="hidden" name="plan_id" value="1">
               <!-- Price table #1 -->
               <div class="panel panel-default price">
                 <!-- pricing table wrapper -->
@@ -44,15 +47,20 @@
                   <li class="text-center"><i class="fa fa-minus text-danger"></i></li>
                   <li class="text-center"><i class="fa fa-minus text-danger"></i><br><br></li>
                   <li>
-                    <button type="button" class="btn btn-primary btn-block  tf-btn custom-btn54">
+                    <button type="submit" class="btn btn-primary btn-block  tf-btn custom-btn54">
                       Get Started Now
                     </button>
                     
                   </li>
                 </ul><!-- end Plan Feature Lists -->
               </div><!-- end pricing table wrapper -->
+            </form>
             </div><!-- end Price table #1 -->
             <div class="col-md-6 price2">
+            <form action="/stripe_payment" method="POST">
+              {% csrf_token %}
+              <input type="hidden" name="buy_type" value="plan">
+              <input type="hidden" name="plan_id" value="2">
               <!-- Price table #2 -->
               <div class="panel panel-default price featured">
                 <!-- pricing table wrapper -->
@@ -78,12 +86,13 @@
                     - LitCharts</li>
                   <li><i class="fa fa-check text-success"></i> Loads more Pound-Saving Plans </li>
                   <li>
-                    <button type="button" class="btn btn-primary btn-block  tf-btn color custom-btn53">Get Started Now</button>
+                    <button type="submit" class="btn btn-primary btn-block  tf-btn color custom-btn53">Get Started Now</button>
                     <p><br></p>
                   </li>
                 </ul><!-- end Plan Feature Lists -->
               </div><!-- end pricing table wrapper -->
             </div><!-- end Price table #2 -->
+          </form>
           </div> <!-- end nested row -->
         </div> <!-- end col 10 with offset 1 to centered -->
       </div> <!-- end outer row -->

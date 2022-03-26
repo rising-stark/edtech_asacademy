@@ -18,7 +18,7 @@ urlpatterns = [
     path('contact/', views.contact, name='contact'),
     path('addchild/', views.addchild, name='addchild'),
     path('stripe_payment/', views.stripe_payment, name='stripe_payment'),
-    path('purchase_courses/', views.purchase_courses, name='purchase_courses'),
+    path('purchase/', views.purchase, name='purchase'),
 
     # Post requests
     path('signup', views.signup, name='signup'),

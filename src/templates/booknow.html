@@ -47,6 +47,7 @@
     <div class="col-sm-2 m-sm-3">
       <form id="form_{{course.course_id}}" action="/stripe_payment" method="POST" class="rounded services13">
         {% csrf_token %}
+        <input type="hidden" name="buy_type" value="course">
         <input type="hidden" name="course_id" value="{{course.course_id}}">
         <img class="coursesimage"src="{% static course.course_img %}">
 
@@ -71,7 +72,6 @@
                 <ul>
                   {% for child in course.students %}
                     <li>
-                      
                       <input type="checkbox" name="children" class="child_{{course.course_id}}"  value={{child.id}}>&nbsp;{{child.profile.first_name}} {{child.profile.last_name}}
                     </li>
                   {% endfor %}

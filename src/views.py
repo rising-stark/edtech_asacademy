@@ -125,11 +125,14 @@ def profile(request):
 		messages.info(request, 'You need to be logged-in to access profile page.')
 		messages.info(request, 'Don\'t have an account yet? Signup now')
 		return redirect('login')
-
-	parent = Parents.objects.get(parent=request.user)
+	try:
+		parent = Parents.objects.get(parent=request.user)
+	except IndexError:
+		messages.info(request, 'You are not a parent.')
+		return redirect('index')
 	students = get_student_details(parent)
-
-	return render(request, 'profile.html', {"students":students})
+	enrollments = Enrollments.objects.filter(parent_id=parent)
+	return render(request, 'profile.html', {"students":students, "enrollments":enrollments})
 
 def addchild(request):
 	if not request.user.is_authenticated:
@@ -142,10 +145,10 @@ def addchild(request):
 		last_name = request.POST.get("last_name", "")
 		dob = request.POST.get("dob",  "")
 		try:
-			parent = Parents.objects.filter(parent=request.user)[0]
+			parent = Parents.objects.get(parent=request.user)
 		except IndexError:
 			messages.info(request, 'You are not a parent.')
-			return redirect('profile')
+			return redirect('index')
 		username = request.user.username + "_child_" + str(get_children_count(parent))
 
 		# Create a new user with the given details
@@ -193,19 +196,28 @@ def booknow(request):
 				c.students = student_list
 	return render(request, "booknow.html", {"courses":courses, "children_count":children_count, "currency": "£"})
 
-def purchase_courses(request):
+def purchase(request):
 	if not request.user.is_authenticated:
 		messages.info(request, 'You need to be logged-in to access your profile.')
 		messages.info(request, 'Don\'t have an account yet? Signup now')
 		return redirect('login')
 
-	course_id = request.GET.get("course_id")
+	buy_type = request.GET.get("buy_type")
+	buy_id = request.GET.get("id")
 	children = request.GET.get("children")
-	course = Courses.objects.get(course_id=int(course_id))
-	for c in children.split(","):
-		child = Students.objects.get(pk=int(c))
-		t = Takes.objects.create(student=child, course=course)
-		t.save()
+	if not buy_type or not buy_id:
+		redirect('login')
+	elif buy_type == "course":
+		course = Courses.objects.get(pk=int(buy_id))
+		for c in children.split(","):
+			child = Students.objects.get(pk=int(c))
+			t = Takes.objects.create(student=child, course=course)
+			t.save()
+	elif buy_type == "plan":
+		plan = Plans.objects.get(pk=int(buy_id))
+		parent = Parents.objects.get(parent=request.user)
+		Enrollments.objects.create(parent_id=parent, plan_id=plan)
+	messages.info(request, f'Your {buy_type} is purchased successfully')
 	return redirect('profile')
 
 def stripe_payment(request):
@@ -215,18 +227,34 @@ def stripe_payment(request):
 		return redirect('login')
 
 	if request.method == "POST":
-		course_id = int(request.POST.get("course_id", -1))
-		children = request.POST.getlist('children')
+		buy_type = request.POST.get("buy_type", "")
+		price_id = ""
+		mode = ""
+		quantity = 1
+		if not buy_type:
+			return redirect('login')
+		elif buy_type == "course":
+			course_id = int(request.POST.get("course_id", -1))
+			children = request.POST.getlist('children')
+			if not children:
+				messages.info(request, 'You need to select atleast 1 child.')
+				return redirect('booknow')
+			if course_id == -1:
+				return redirect("booknow")
 
-		if not children:
-			messages.info(request, 'You need to select atleast 1 child.')
-			return redirect('booknow')
-			
-		children = ','.join(children)
+			price_id = Courses.objects.get(pk=course_id).price_id
+			mode = "payment"
+			quantity = len(children)
+			children = ','.join(children)
+			success_url = "&children="+str(children)+"&id="+str(course_id)
+		elif buy_type == "plan":
+			plan_id = int(request.POST.get("plan_id", -1))
+			if plan_id == -1:
+				return redirect("booknow")
+			price_id = Plans.objects.get(pk=plan_id).price_id
+			mode = "subscription"
+			success_url = "&id="+str(plan_id)
 
-		if course_id == -1:
-			return redirect("/booknow")
-		course = Courses.objects.get(course_id=course_id)
 		checkout_session = ""
 		YOUR_DOMAIN = 'http://localhost:8000'
 		try:
@@ -234,17 +262,18 @@ def stripe_payment(request):
 				line_items=[
 					{
 						# Provide the exact Price ID (for example, pr_1234) of the product you want to sell
-						'price': course.price_id,
-						'quantity': len(children),
+						'price': price_id,
+						'quantity': quantity,
 					},
 				],
-				mode='payment',
-				success_url=YOUR_DOMAIN + '/purchase_courses?children='+str(children)+'&course_id='+str(course_id),
+				mode=mode,
+				success_url=YOUR_DOMAIN + '/purchase?buy_type='+ buy_type + success_url,
 				cancel_url=YOUR_DOMAIN + '/booknow',
 			)
 		except Exception as e:
 			print("we are in an exception")
 			print(e)
-
-		return redirect(checkout_session.url, code=303)
+			messages.info(request, 'Server error ocurred. Pls try again later')
+			return redirect('booknow')
+		return redirect(checkout_session.url)
 	return redirect('booknow')
