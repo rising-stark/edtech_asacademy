@@ -28,27 +28,28 @@ class Courses(models.Model):
 	course_name = models.CharField(max_length=200)
 	course_starts_at = models.DateTimeField(default=now)
 	course_ends_at = models.DateTimeField(blank=True, null=True)
-	course_price = models.IntegerField(default=0)
+	course_price = models.FloatField(default=0)
 	price_id = models.CharField(max_length=200, blank=True, null=True)
 	course_desc = models.TextField(default="")
 	course_img = models.CharField(max_length=200, blank=True, null=True)
 
-# class Plans(models.Model):
-# 	plan_id = models.AutoField(primary_key=True)
-# 	plan_name = models.CharField(max_length=200)
-# 	plan_price = models.IntegerField(default=0)
-# 	plan_starts_at = models.DateTimeField(default=now)
-# 	plan_ends_at = models.DateTimeField(blank=True, null=True)
-# 	courses = models.ManyToManyField(Courses)
+class Plans(models.Model):
+	plan_id = models.AutoField(primary_key=True)
+	plan_name = models.CharField(max_length=200)
+	plan_recurring_type = models.CharField(max_length=200)
+	plan_price = models.FloatField(default=0)
+	price_id = models.CharField(max_length=200, blank=True, null=True)
+	plan_starts_at = models.DateTimeField(default=now)
+	plan_ends_at = models.DateTimeField(blank=True, null=True)
 
 class Teaches(models.Model):
 	teacher = models.ForeignKey(Teachers, on_delete=models.CASCADE)
 	course = models.ForeignKey(Courses, on_delete=models.CASCADE)
 
-# class Enrollments(models.Model):
-# 	enrollment_id = models.AutoField(primary_key=True)
-# 	student_id = models.ForeignKey(Students, on_delete=models.CASCADE)
-# 	plan_id = models.ForeignKey(Plans, on_delete=models.CASCADE)
+class Enrollments(models.Model):
+	enrollment_id = models.AutoField(primary_key=True)
+	parent_id = models.ForeignKey(Parents, on_delete=models.CASCADE)
+	plan_id = models.ForeignKey(Plans, on_delete=models.CASCADE)
 
 class Takes(models.Model):
 	student = models.ForeignKey(Students, on_delete=models.CASCADE)
