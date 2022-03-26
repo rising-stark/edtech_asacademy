@@ -12,42 +12,64 @@
     <h1>Welcome, {{ request.user }}!</h1>
   </div>
   <div class="row pb-4 mb-4">
-      <div class="col">
-        <div class="card">
-          <div class="card-header">
-            <div class="card-title mb-0 d-flex align-items-end space-between">
-              <h3 class="mb-0">Your children</h3>
-              <a class="btn btn-primary custom-btn51 btn-sm" href="/addchild">
-                <i class="fa fa-plus-circle"></i> Add a new child
-            </a>
-            </div>
-            
+    <div class="col">
+      <div class="card">
+        <div class="card-header">
+          <div class="card-title mb-0 d-flex align-items-end space-between">
+            <h3 class="mb-0">Your children</h3>
+            <a class="btn btn-primary custom-btn51 btn-sm" href="/addchild">
+              <i class="fa fa-plus-circle"></i> Add a new child
+          </a>
           </div>
-            
-          <div class="row p-3 d-flex flex-row flex-wrap">
-            {% for student in students %}
-              <div class="col-md-3 p-3">
-                <div class="card">
-                  <div class="card-header">
-                    <div class="card-title">{{student.profile.first_name}} {{student.profile.last_name}}</div>
-                  </div>
-                  <div class="card-body">
-                    <ul class="list-group">
-                        {% if student.courses %}
-                        {% for course in student.courses %}
-                        <li class="list-group-item">{{course.course_name}}</li>
-                        {% endfor %}
-                        {% else %}
-                        <li class="list-group-item">No courses yet</li>
-                        {% endif %}
-                    </ul>
-                  </div>
+
+        </div>
+
+        <div class="row p-3 d-flex flex-row flex-wrap">
+          {% for student in students %}
+            <div class="col-md-3 p-3">
+              <div class="card">
+                <div class="card-header">
+                  <div class="card-title">{{student.profile.first_name}} {{student.profile.last_name}}</div>
+                </div>
+                <div class="card-body">
+                  <ul class="list-group">
+                    {% if student.courses %}
+                      {% for course in student.courses %}
+                      <li class="list-group-item">{{course.course_name}}</li>
+                      {% endfor %}
+                    {% else %}
+                      <li class="list-group-item">No courses yet</li>
+                    {% endif %}
+                  </ul>
                 </div>
               </div>
-            {% endfor %}
-          </div>
+            </div>
+          {% endfor %}
         </div>
       </div>
+    </div>
+  </div>
+  <div class="row pb-4 mb-4">
+    <div class="col">
+      <div class="card">
+        <div class="card-header">
+          <div class="card-title mb-0 d-flex align-items-end space-between">
+            <h3 class="mb-0">Your enrollments</h3>
+          </div>
+        </div>
+        <div class="row p-3 d-flex flex-row flex-wrap">
+          {% for e in enrollments %}
+            <div class="col-md-3 p-3">
+              <ul class="list-group">
+                {% if e %}
+                  <li class="list-group-item">{{e.plan_id.plan_name}}</li>
+                {% endif %}
+              </ul>
+            </div>
+          {% endfor %}
+        </div>
+      </div>
+    </div>
   </div>
 </div>
 {% endblock %}
