@@ -87,7 +87,7 @@ if(env('CLEARDB_DATABASE_URL')):
     DATABASES = {
         'default': {
             'ENGINE': 'django.db.backends.mysql',
-            'NAME': dsn.path,
+            'NAME': dsn.path.strip('/'),
             'USER': dsn.username,
             'PASSWORD': dsn.password,
             'HOST': dsn.hostname,
