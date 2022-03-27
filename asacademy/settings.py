@@ -79,7 +79,6 @@ WSGI_APPLICATION = 'asacademy.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/3.2/ref/settings/#databases
 
-mysql://b6c0fcd534ec74:d16e81d9@us-cdbr-east-05.cleardb.net/heroku_5fbd1a22134a348?reconnect=true
 if(env('CLEARDB_DATABASE_URL')):
     dsn = urlparse(env('CLEARDB_DATABASE_URL'))
     DATABASES = {
