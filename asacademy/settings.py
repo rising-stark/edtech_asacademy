@@ -11,7 +11,11 @@ https://docs.djangoproject.com/en/3.2/ref/settings/
 """
 
 from pathlib import Path
-import os
+import os, environ
+from urllib.parse import urlparse
+
+env = environ.Env()
+environ.Env.read_env()
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -75,12 +79,26 @@ WSGI_APPLICATION = 'asacademy.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/3.2/ref/settings/#databases
 
-DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+mysql://b6c0fcd534ec74:d16e81d9@us-cdbr-east-05.cleardb.net/heroku_5fbd1a22134a348?reconnect=true
+if(env('CLEARDB_DATABASE_URL')):
+    dsn = urlparse(env('CLEARDB_DATABASE_URL'))
+    DATABASES = {
+        'default': {
+            'ENGINE': 'django.db.backends.mysql',
+            'NAME': dsn.path,
+            'USER': dsn.username,
+            'PASSWORD': dsn.password,
+            'HOST': dsn.hostname,
+            'PORT': dsn.port,
+        }
     }
-}
+else:
+    DATABASES = {
+        'default': {
+            'ENGINE': 'django.db.backends.sqlite3',
+            'NAME': BASE_DIR / 'db.sqlite3',
+        }
+    }
 
 
 # Password validation
