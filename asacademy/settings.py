@@ -147,7 +147,7 @@ STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 STATICFILES_DIRS = [
-    os.path.join(BASE_DIR, 'static'),
+        os.path.join(BASE_DIR, 'asacademy/static'),
 ]
 STRIPE_PUBLIC_KEY = "pk_test_51KKQSISAZwYK2LRj9XK3VgT3f2yJ3di5qLHvJJCby7Q70x9qLDCdDFHUgGvJE3e0Qghmh4hTENagnL1zL2b17Aiv00uR3DpcGw"
 STRIPE_SECRET_KEY = "sk_test_51KKQSISAZwYK2LRjTWP8cQi04pOrjaDJ1JPPqD1JRXpYsDPK14jzUF5kkcT79yFAg8zAdwoTarxwUDQkP3oqsawG00jdVBnICv"
